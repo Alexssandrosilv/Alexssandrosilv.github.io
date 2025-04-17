@@ -9,7 +9,8 @@ website:
         text: Modelos Lineares Generalizados
       - href: imd.qmd
         text: Introduçaõ a Mineração de Dados
-      - about.qmd
+      - href: about.qmd
+        text: sobre
 
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
