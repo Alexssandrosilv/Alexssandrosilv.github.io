@@ -5,8 +5,10 @@ website:
   title: ""
   navbar:
     left:
-      - href: index.qmd
+      - href: mlg.qmd
         text: Modelos Lineares Generalizados
+      - href: imd.qmd
+        text: Introduçaõ a Mineração de Dados
       - about.qmd
 
 format: 
