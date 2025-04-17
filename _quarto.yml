@@ -6,11 +6,11 @@ website:
   navbar:
     left:
       - href: mlg.qmd
-        text: Modelos Lineares Generalizados
+        text: Modelos Lineares Generalizados (MLG)
       - href: imd.qmd
-        text: Introduçaõ a Mineração de Dados
+        text: Introdução à Mineração de Dados (IMD)
       - href: about.qmd
-        text: sobre
+        text: Sobre
 
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
