@@ -11,9 +11,13 @@ website:
 
 format:
   html:
-    # theme: cosmo
+    html-math-method: katex                                            # --> Método de renderização matemática (KaTeX é leve e rápido)
+    theme: 
+      light: [flatly]                                                  # -----> Tema visual para o modo claro (Flatly: moderno e claro)
+      dark: [cyborg]                                                   # -----> Tema visual para o modo escuro (Cyborg: fundo escuro e letras claras)
     # css: styles.css
     toc: true
+
 
 
 
