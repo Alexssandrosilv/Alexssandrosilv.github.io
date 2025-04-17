@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2"
   },
   {
     "objectID": "index.html",
@@ -24,7 +24,7 @@
     "objectID": "index.html#prática",
     "href": "index.html#prática",
     "title": "MODELOS LINEARES GENERALIZADOS - MLG",
-    "section": "Prática",
-    "text": "Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
+    "section": "2 Prática",
+    "text": "2 Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
   }
 ]
