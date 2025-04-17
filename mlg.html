@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About</title>
+<title>MODELOS LINEARES GENERALIZADOS - MLG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -120,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./mlg.html"> 
+    <a class="nav-link active" href="./mlg.html" aria-current="page"> 
 <span class="menu-text">Modelos Lineares Generalizados</span></a>
   </li>  
   <li class="nav-item">
@@ -128,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Introduçaõ a Mineração de Dados</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -143,15 +186,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sumário</h2>
+   
+  <ul>
+  <li><a href="#família-exponencial-canônica" id="toc-família-exponencial-canônica" class="nav-link active" data-scroll-target="#família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</a>
+  <ul class="collapse">
+  <li><a href="#família-exponencial-biparamétrica" id="toc-família-exponencial-biparamétrica" class="nav-link" data-scroll-target="#família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</a></li>
+  <li><a href="#família-exponencial-uniparamétrica" id="toc-família-exponencial-uniparamétrica" class="nav-link" data-scroll-target="#família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</a></li>
+  <li><a href="#distribuição-da-amostra-função-de-verossmilhança" id="toc-distribuição-da-amostra-função-de-verossmilhança" class="nav-link" data-scroll-target="#distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</a></li>
+  <li><a href="#função-de-log-verossmilhança" id="toc-função-de-log-verossmilhança" class="nav-link" data-scroll-target="#função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">1.5</span> Exercícios</a></li>
+  </ul></li>
+  <li><a href="#prática" id="toc-prática" class="nav-link" data-scroll-target="#prática"><span class="header-section-number">2</span> Prática</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">MODELOS LINEARES GENERALIZADOS - MLG</h1>
 </div>
 
 
@@ -168,18 +225,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>About this site</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="família-exponencial-canônica" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
+<p><br></p>
+<section id="família-exponencial-biparamétrica" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</h3>
+<p><br></p>
+<div style="text-align: justify">
+<p>Dizemos que uma variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial biparamétrica na forma canônica, <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, se sua função densidade (ou de probabilidade) pode ser expressa por</p>
+<p><br></p>
+<p><span class="math display">
+f(y;\theta,\phi) = \exp\left\{ \phi \left[y\theta - b(\theta)  \right] + c(y, \phi) \right\} \mathbb{I}_A(y)
+</span></p>
+<p>Em que as componentes são:</p>
+<ul style="margin-left: 50px;">
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">\theta \in \mathbb{R}</span> é o <strong>parâmetro canônico</strong> da FE;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">\phi &gt; 0</span> é o <strong>parâmetro de precisão</strong>;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">b(\cdot)</span> é uma função real, contínua e duas vezes diferenciável;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">c(\cdot\,;\cdot)</span> é uma função real não negativa;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">A</span> é o suporte da distribuição de <span class="math inline">Y</span>, que não deve depender dos parâmetros, nem de <span class="math inline">\theta</span> nem de <span class="math inline">\phi</span>.</p>
+</li>
+</ul>
+<p><br></p>
+</div>
+</section>
+<section id="família-exponencial-uniparamétrica" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</h3>
+<p><br></p>
+<div style="text-align: justify">
+<p>Note que, ao considerarmos o parâmetro de precisão <span class="math inline">\phi = 1</span>, diz-se que a variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial uniparamétrica. Ou seja, <span class="math inline">Y \sim \text{FE}(\theta)</span>, se sua função densidade (ou de probabilidade) puder ser expressa por</p>
+<p><br></p>
+<p><span class="math display">
+f(y;\theta,\phi) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
+</span></p>
+</div>
+<p><br></p>
+</section>
+<section id="distribuição-da-amostra-função-de-verossmilhança" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</h3>
+<p><br></p>
+<div style="text-align: justify">
+<p>Seja <span class="math inline">\bm{Y} = (Y_{1},Y_{2},\cdots , Y_{n})</span> uma amostra aleatória de variáveis aleatórias independentes provenientes de uma população <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, tal que a função densidade (ou de probabilidade) de cada <span class="math inline">\bm{Y_{i}}</span>, com <span class="math inline">i = 1 ,\cdots , n</span> é dada por</p>
+<p><br></p>
+<p><span class="math display">
+f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \right] + c(y_{i}, \phi) \right\} \mathbb{I}_A(y) \quad \quad \theta \in \mathbb{R}, \quad \phi &gt; 0
+</span></p>
+<p><br> Logo a função de verossimilhança, com representação da <strong>FE</strong> é dada por</p>
+<p><br></p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\theta},\phi)
+&amp;= \prod_{i = 1}^{n} f(y_{i};\theta_{i},\phi) \\
+&amp;= \prod_{i = 1}^{n} \exp\left\{ \phi \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + c(y_{i}, \phi) \right\} \\
+&amp;= \exp\left\{ \phi \left[y_{1}\theta_{1} - b(\theta_{1})  \right] + c(y_{1}, \phi) \right\} \times \cdots \times \exp\left\{ \phi \left[y_{n}\theta_{n} - b(\theta_{n})  \right] + c(y_{n}, \phi) \right\} \\
+&amp;= \exp\left\{ \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi) \right\}
+\end{aligned}
+</span></p>
+</div>
+</section>
+<section id="função-de-log-verossmilhança" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</h3>
+<p><br></p>
+<div style="text-align: justify">
+<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por <br></p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{\ell}(\boldsymbol{\theta},\phi)  
+&amp;= \log \left\{ \mathcal{L}(\boldsymbol{\theta},\phi) \right\} \\
+&amp;= \log \left\{ \exp\left\{ \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi) \right\} \right\}\\
+&amp;= \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi)
+\end{aligned}
+</span></p>
+</div>
+</section>
+<section id="exercícios" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">1.5</span> Exercícios</h3>
+<p><br></p>
+<div style="text-align: justify">
+<p>Para cada distribuição da variável aleatória <span class="math inline">Y</span> a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança <span class="math inline">\mu</span>, a função de variância <span class="math inline">V(\mu)</span> e a variância de <span class="math inline">Y</span>.</p>
+<p><br></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Binomial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Dirichlet</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><span class="math display">
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+</span></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><span class="math display">
+P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
+</span></p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><span class="math display">
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
+</span></p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><span class="math display">
+f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i=1}^{k} \alpha_i \right)}{\prod_{i=1}^{k} \Gamma(\alpha_i)} \prod_{i=1}^{k} x_i^{\alpha_i - 1}, \quad \text{para } x_i \geq 0 \text{ e } \sum_{i=1}^{k} x_i = 1.
+</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="prática" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="prática"><span class="header-section-number">2</span> Prática</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exemplo de código em R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Exemplo de código em Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fizz_buzz <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">fbnums =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    fbnums <span class="sc">%%</span> <span class="dv">15</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"FizzBuzz"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    fbnums <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Fizz"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    fbnums <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Buzz"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(fbnums)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(output)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizz_buzz(num):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> <span class="dv">15</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"FizzBuzz"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> num <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Buzz"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> num <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Fizz"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
