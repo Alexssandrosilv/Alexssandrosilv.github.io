@@ -2,11 +2,11 @@ project:
   type: website
 
 website:
-  title: "Alexssandrosilv.github.io"
+  title: ""
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Modelos Lineares Generalizados
       - about.qmd
 
 format: 
