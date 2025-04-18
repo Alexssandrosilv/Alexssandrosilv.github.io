@@ -1,12 +1,22 @@
 ---
 title: "MODELOS LINEARES GENERALIZADOS - MLG"                          # --> Título principal do documento
-subtitle: "Notações de Aula"                                           # --> Subtítulo (complementa o título)
+# subtitle: "Notações de Aula"                                           # --> Subtítulo (complementa o título)
 author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**" # --> Nome do autor (com negrito usando Quarto)
-date: ""                                                               # --> Data (em branco para não exibir nada)
-date-format: short                                                     # --> Formato da data: curto (ex: 16/04/2025)
+# date: ""                                                               # --> Data (em branco para não exibir nada)
+# date-format: short                                                     # --> Formato da data: curto (ex: 16/04/2025)
 lang: pt
 editor: visual                                                         # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
 ---
+
+<br>
+
+::: {.callout-note}
+### Informação importante
+Este é um trecho com fundo azul claro, ideal para chamar atenção de um aviso, informação ou destaque.
+:::
+
+<br>
+
 
 ## Família Exponencial Canônica
 
@@ -136,8 +146,429 @@ $$
 
 <br>
 
-::: {style="text-align: justify"}
 
+::: {.callout-note }
+### 📝 COLINHA: Resultados Matemáticos Importantes
+
+<div style="text-align: justify;">
+
+É fundamental ter familiaridade com alguns resultados clássicos da Matemática, especialmente aqueles que facilitam a manipulação algébrica de expressões em contextos estatísticos. Abaixo, apresenta-se um breve resumo — uma espécie de "colinha" — com resultados essenciais que devem ser compreendidos para a realização das atividades propostas.  
+
+::: panel-tabset
+
+
+## 🧠 **Função Logarítmica**
+
+
+**Propriedades e Resultados provenientes da Função Logarítmica (Base Neperiana)**
+
+<ul style="margin-left: 40px;">
+
+<li style="margin-bottom: 10px;">
+$\log(a \cdot b) =  \log(a) + \log(b)$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\log\left( \dfrac{a}{b} \right) =  \log(a) - \log(b)$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\log(a^{b}) =  b \cdot \log(a)$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\log(e^{a}) =  a$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$e^{a+b} =  e^{a} \times e^{b}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\dfrac{\delta}{\delta a} e^{a} =  e^{a}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\dfrac{\delta}{\delta a}\log \left(a \right) =  \dfrac{1}{a}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\dfrac{\delta}{\delta a}\log \left( g(a) \right) =  \dfrac{1}{g(a)} \times \dfrac{\delta}{\delta a} g(a)$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\log(1) = 0$;
+</li>
+
+</ul>
+
+
+## 🧠 **Raiz**
+
+**Resultados provenientes das Funções de Raiz**
+
+<ul style="margin-left: 40px;">
+
+<li style="margin-bottom: 10px;">
+$\sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt{a^b} = a^{\frac{b}{2}}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt[n]{a} = a^{\frac{1}{n}}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\dfrac{\delta}{\delta x} \sqrt{x} = \frac{1}{2\sqrt{x}}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\dfrac{\delta}{\delta x} \sqrt[n]{x} = \frac{1}{n} x^{\frac{1}{n} - 1}$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt{1} = 1$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt{0} = 0$;
+</li>
+
+<li style="margin-bottom: 10px;">
+$\sqrt{-1}$ não é um número real (representa a unidade imaginária $i$);
+</li>
+
+</ul>
+
+## 🧠  **Operações com Raízes**
+
+**Propriedades e Operações Fundamentais com Radicais**
+
+<ul style="margin-left: 40px;">
+
+<li style="margin-bottom: 10px;">
+<b>Produto de radicais com mesmo índice:</b>  
+$$
+\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Divisão de radicais com mesmo índice:</b>  
+$$
+\frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Radiciação de potências:</b>  
+$$
+\sqrt[n]{a^m} = a^{\frac{m}{n}}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Radical de radical:</b>  
+$$
+\sqrt[n]{\sqrt[m]{a}} = \sqrt[n \cdot m]{a}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Racionalização de denominadores:</b>  
+$$
+\frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Racionalização com binômio conjugado:</b>  
+$$
+\frac{1}{\sqrt{a} + \sqrt{b}} = \frac{\sqrt{a} - \sqrt{b}}{a - b}
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Multiplicação de conjugados:</b>  
+$$
+(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b
+$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Extração de fator de dentro da raiz:</b>  
+$$
+\sqrt{a^2 \cdot b} = a \cdot \sqrt{b}
+$$  
+(se $a \geq 0$)
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Radiciação de frações:</b>  
+$$
+\sqrt[n]{\frac{a^m}{b^k}} = \frac{a^{\frac{m}{n}}}{b^{\frac{k}{n}}}
+$$
+</li>
+
+</ul>
+
+<!-- ## 🧠  **Funções** -->
+
+<!-- **Definição e Propriedades Básicas das Funções** -->
+
+<!-- <ul style="margin-left: 40px;"> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função:</b> é uma relação entre dois conjuntos, onde a cada elemento do domínio está associado um único elemento do contradomínio.   -->
+<!-- $$ -->
+<!-- f: A \rightarrow B \quad \text{tal que} \quad f(x) = y -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Identidade:</b>   -->
+<!-- $$ -->
+<!-- f(x) = x -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Constante:</b>   -->
+<!-- $$ -->
+<!-- f(x) = c \quad \text{com } c \in \mathbb{R} -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Afim (ou Linear):</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax + b -->
+<!-- $$   -->
+<!-- Com $a$ como coeficiente angular e $b$ como coeficiente linear; -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Quadrática:</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax^2 + bx + c -->
+<!-- $$   -->
+<!-- Tem gráfico em forma de parábola. -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Modular:</b>   -->
+<!-- $$ -->
+<!-- f(x) = |x| =  -->
+<!-- \begin{cases} -->
+<!-- x, & \text{se } x \geq 0 \\ -->
+<!-- -x, & \text{se } x < 0 -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Exponencial:</b>   -->
+<!-- $$ -->
+<!-- f(x) = a^x \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Logarítmica:</b>   -->
+<!-- $$ -->
+<!-- f(x) = \log_a(x) \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Composta:</b>   -->
+<!-- Se $f(x)$ e $g(x)$ são funções, então a função composta $f(g(x))$ é dada por:   -->
+<!-- $$ -->
+<!-- (f \circ g)(x) = f(g(x)) -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Inversa:</b>   -->
+<!-- Se $f(x) = y$, então a função inversa $f^{-1}(x)$ satisfaz:   -->
+<!-- $$ -->
+<!-- f^{-1}(y) = x -->
+<!-- $$   -->
+<!-- e   -->
+<!-- $$ -->
+<!-- f(f^{-1}(x)) = f^{-1}(f(x)) = x -->
+<!-- $$ -->
+<!-- </li> -->
+
+<!-- </ul> -->
+
+
+
+## 🧠  **Fatoração**
+
+**Técnicas de Fatoração de Expressões Algébricas**
+
+<ul style="margin-left: 40px;">
+
+<li style="margin-bottom: 10px;">
+<b>Fator Comum:</b> Extrai-se o maior fator comum entre os termos.  
+$$ab + ac = a(b + c)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Agrupamento:</b> Agrupa-se os termos em pares que permitam evidenciar fator comum.  
+$$ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Diferença de Quadrados:</b>  
+$$a^2 - b^2 = (a - b)(a + b)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Soma):</b>  
+$$a^2 + 2ab + b^2 = (a + b)^2$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Diferença):</b>  
+$$a^2 - 2ab + b^2 = (a - b)^2$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Cubo da Soma:</b>  
+$$(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Cubo da Diferença:</b>  
+$$(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Soma de Cubos:</b>  
+$$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Diferença de Cubos:</b>  
+$$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Fatoração com Mudança de Variável:</b>  
+Exemplo:  
+$$x^4 - 5x^2 + 4$$  
+Seja $y = x^2$:  
+$$y^2 - 5y + 4 = (y - 4)(y - 1)$$  
+Voltando à variável original:  
+$$x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x - 2)(x + 2)(x - 1)(x + 1)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Expoente Negativo:</b>  
+$$x^{-n} = \dfrac{1}{x^n}$$
+</li>
+
+<li style="margin-bottom: 10px;">
+<b>Fatoração de Frações Algébricas:</b>  
+Exemplo:  
+$$\dfrac{x^2 - 9}{x^2 - x - 6} = \dfrac{(x - 3)(x + 3)}{(x - 3)(x + 2)} = \dfrac{x + 3}{x + 2} \quad (x \ne 3)$$
+</li>
+
+</ul>
+
+
+## 🧠 **Derivadas**
+
+**Regras de Derivação**
+
+<ul style="margin-left: 40px;">
+
+<li style="margin-bottom: 10px;">
+**Constante:** A derivada de uma constante é zero.  
+$$\dfrac{\delta}{\delta x} \left( c \right) = 0$$ onde $c$ é uma constante;
+</li>
+
+<li style="margin-bottom: 10px;">
+**Regra da Potência:** A derivada de $x^n$ é dada por $n \cdot x^{n-1}$, onde $n$ é um número real; 
+$$\dfrac{\delta}{\delta x} \left( x^n \right) = n \cdot x^{n-1}$$
+</li>
+
+<li style="margin-bottom: 10px;">
+**Derivada de uma Função Exponencial:** A derivada de $e^x$ é simplesmente $e^x$; 
+$$\dfrac{\delta}{\delta x} \left( e^x \right) = e^x$$
+</li>
+
+<li style="margin-bottom: 10px;">
+**Derivada do Logaritmo Natural:** A derivada de $\log(x)$ é $\dfrac{1}{x}$;  
+$$\dfrac{\delta}{\delta x} \left( \log(x) \right) = \dfrac{1}{x}$$
+</li>
+
+<li style="margin-bottom: 10px;">
+**Regra do Produto:** A derivada de um produto de duas funções $f(x)$ e $g(x)$ é dada por  
+$$\dfrac{\delta}{\delta x} \left( f(x) \cdot g(x) \right) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$$
+</li>
+
+<li style="margin-bottom: 10px;">
+**Regra do Quociente:** A derivada de um quociente de duas funções $f(x)$ e $g(x)$ é dada por  
+$$\dfrac{\delta}{\delta x} \left( \dfrac{f(x)}{g(x)} \right) = \dfrac{g(x) \cdot f'(x) - f(x) \cdot g'(x)}{g(x)^2}$$
+</li>
+
+<li style="margin-bottom: 10px;">
+**Regra da Cadeia:** A derivada de uma função composta $f(g(x))$ é dada por  
+$$\dfrac{\delta}{\delta x} \left( f(g(x)) \right) = f'(g(x)) \cdot g'(x)$$
+</li>
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $sin(x)$:** A derivada de $sin(x)$ é $cos(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin(x) \right) = \cos(x)$; -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $cos(x)$:** A derivada de $cos(x)$ é $-sin(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos(x) \right) = -\sin(x)$; -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $tan(x)$:** A derivada de $tan(x)$ é $\sec^2(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \tan(x) \right) = \sec^2(x)$; -->
+<!-- </li> -->
+
+<li style="margin-bottom: 10px;">
+**Derivada de $\dfrac{1}{x}$ é $-\dfrac{1}{x^2}$;**  
+$$\dfrac{\delta}{\delta x} \left( \frac{1}{x} \right) = -\dfrac{1}{x^2}$$
+</li>
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\sin^{-1}(x)$:** A derivada de $\sin^{-1}(x)$ é $\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin^{-1}(x) \right) = \dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\cos^{-1}(x)$:** A derivada de $\cos^{-1}(x)$ é $-\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos^{-1}(x) \right) = -\dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+
+</ul>
+
+:::
+
+</div>
+
+:::
+
+
+<br>
+
+::: {style="text-align: justify"}
 Para cada distribuição da variável aleatória $Y$ a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança $\mu$, a função de variância $V(\mu)$ e a variância de $Y$.
 
 <br>
