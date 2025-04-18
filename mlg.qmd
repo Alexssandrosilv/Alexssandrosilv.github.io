@@ -575,20 +575,44 @@ Para cada distribuição da variável aleatória $Y$ a seguir, mostraremos que e
 
 ::: panel-tabset
 
-## Normal
-
-$$
-f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
-$$
-
-## Poisson
+## a) Poisson
 
 
 $$
 P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
 $$
 
-## Binomial
+
+## b) Binomial
+
+
+$$
+P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
+$$
+
+
+## c) Binomial Negativa
+
+
+$$
+P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
+$$
+
+
+## d) Normal
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+$$
+
+## e) Gamma
+
+
+$$
+P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
+$$
+
+## f) Normal Inversa
 
 
 $$
