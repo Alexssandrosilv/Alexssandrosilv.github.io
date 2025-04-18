@@ -210,7 +210,6 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">MODELOS LINEARES GENERALIZADOS - MLG</h1>
-<p class="subtitle lead">Notações de Aula</p>
 </div>
 
 
@@ -233,6 +232,21 @@ window.Quarto = {
 </header>
 
 
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este é um trecho com fundo azul claro, ideal para chamar atenção de um aviso, informação ou destaque.</p>
+</div>
+</div>
+<p><br></p>
 <section id="família-exponencial-canônica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
 <p><br></p>
@@ -318,28 +332,363 @@ f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \
 <section id="exercícios" class="level3" data-number="1.5">
 <h3 data-number="1.5" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">1.5</span> Exercícios</h3>
 <p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📝 COLINHA: Resultados Matemáticos Importantes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div style="text-align: justify;">
+<p>É fundamental ter familiaridade com alguns resultados clássicos da Matemática, especialmente aqueles que facilitam a manipulação algébrica de expressões em contextos estatísticos. Abaixo, apresenta-se um breve resumo — uma espécie de “colinha” — com resultados essenciais que devem ser compreendidos para a realização das atividades propostas.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">🧠 <strong>Função Logarítmica</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🧠 <strong>Raiz</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">🧠 <strong>Operações com Raízes</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">🧠 <strong>Fatoração</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">🧠 <strong>Derivadas</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong>Propriedades e Resultados provenientes da Função Logarítmica (Base Neperiana)</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log(a \cdot b) =  \log(a) + \log(b)</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log\left( \dfrac{a}{b} \right) =  \log(a) - \log(b)</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log(a^{b}) =  b \cdot \log(a)</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log(e^{a}) =  a</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">e^{a+b} =  e^{a} \times e^{b}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a} e^{a} =  e^{a}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a}\log \left(a \right) =  \dfrac{1}{a}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a}\log \left( g(a) \right) =  \dfrac{1}{g(a)} \times \dfrac{\delta}{\delta a} g(a)</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log(1) = 0</span>;
+</li>
+</ul>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Resultados provenientes das Funções de Raiz</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{a^b} = a^{\frac{b}{2}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt[n]{a} = a^{\frac{1}{n}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta x} \sqrt{x} = \frac{1}{2\sqrt{x}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta x} \sqrt[n]{x} = \frac{1}{n} x^{\frac{1}{n} - 1}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{1} = 1</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{0} = 0</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{-1}</span> não é um número real (representa a unidade imaginária <span class="math inline">i</span>);
+</li>
+</ul>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><strong>Propriedades e Operações Fundamentais com Radicais</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<b>Produto de radicais com mesmo índice:</b><br>
+<span class="math display">
+\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Divisão de radicais com mesmo índice:</b><br>
+<span class="math display">
+\frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radiciação de potências:</b><br>
+<span class="math display">
+\sqrt[n]{a^m} = a^{\frac{m}{n}}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radical de radical:</b><br>
+<span class="math display">
+\sqrt[n]{\sqrt[m]{a}} = \sqrt[n \cdot m]{a}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Racionalização de denominadores:</b><br>
+<span class="math display">
+\frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Racionalização com binômio conjugado:</b><br>
+<span class="math display">
+\frac{1}{\sqrt{a} + \sqrt{b}} = \frac{\sqrt{a} - \sqrt{b}}{a - b}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Multiplicação de conjugados:</b><br>
+<span class="math display">
+(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Extração de fator de dentro da raiz:</b><br>
+<span class="math display">
+\sqrt{a^2 \cdot b} = a \cdot \sqrt{b}
+</span><br>
+(se <span class="math inline">a \geq 0</span>)
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radiciação de frações:</b><br>
+<span class="math display">
+\sqrt[n]{\frac{a^m}{b^k}} = \frac{a^{\frac{m}{n}}}{b^{\frac{k}{n}}}
+</span>
+</li>
+</ul>
+<!-- ## 🧠  **Funções** -->
+<!-- **Definição e Propriedades Básicas das Funções** -->
+<!-- <ul style="margin-left: 40px;"> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função:</b> é uma relação entre dois conjuntos, onde a cada elemento do domínio está associado um único elemento do contradomínio.   -->
+<!-- $$ -->
+<!-- f: A \rightarrow B \quad \text{tal que} \quad f(x) = y -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Identidade:</b>   -->
+<!-- $$ -->
+<!-- f(x) = x -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Constante:</b>   -->
+<!-- $$ -->
+<!-- f(x) = c \quad \text{com } c \in \mathbb{R} -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Afim (ou Linear):</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax + b -->
+<!-- $$   -->
+<!-- Com $a$ como coeficiente angular e $b$ como coeficiente linear; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Quadrática:</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax^2 + bx + c -->
+<!-- $$   -->
+<!-- Tem gráfico em forma de parábola. -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Modular:</b>   -->
+<!-- $$ -->
+<!-- f(x) = |x| =  -->
+<!-- \begin{cases} -->
+<!-- x, & \text{se } x \geq 0 \\ -->
+<!-- -x, & \text{se } x < 0 -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Exponencial:</b>   -->
+<!-- $$ -->
+<!-- f(x) = a^x \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Logarítmica:</b>   -->
+<!-- $$ -->
+<!-- f(x) = \log_a(x) \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Composta:</b>   -->
+<!-- Se $f(x)$ e $g(x)$ são funções, então a função composta $f(g(x))$ é dada por:   -->
+<!-- $$ -->
+<!-- (f \circ g)(x) = f(g(x)) -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Inversa:</b>   -->
+<!-- Se $f(x) = y$, então a função inversa $f^{-1}(x)$ satisfaz:   -->
+<!-- $$ -->
+<!-- f^{-1}(y) = x -->
+<!-- $$   -->
+<!-- e   -->
+<!-- $$ -->
+<!-- f(f^{-1}(x)) = f^{-1}(f(x)) = x -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- </ul> -->
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><strong>Técnicas de Fatoração de Expressões Algébricas</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<b>Fator Comum:</b> Extrai-se o maior fator comum entre os termos.<br>
+<span class="math display">ab + ac = a(b + c)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Agrupamento:</b> Agrupa-se os termos em pares que permitam evidenciar fator comum.<br>
+<span class="math display">ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Diferença de Quadrados:</b><br>
+<span class="math display">a^2 - b^2 = (a - b)(a + b)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Soma):</b><br>
+<span class="math display">a^2 + 2ab + b^2 = (a + b)^2</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Diferença):</b><br>
+<span class="math display">a^2 - 2ab + b^2 = (a - b)^2</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Cubo da Soma:</b><br>
+<span class="math display">(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Cubo da Diferença:</b><br>
+<span class="math display">(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Soma de Cubos:</b><br>
+<span class="math display">a^3 + b^3 = (a + b)(a^2 - ab + b^2)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Diferença de Cubos:</b><br>
+<span class="math display">a^3 - b^3 = (a - b)(a^2 + ab + b^2)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Fatoração com Mudança de Variável:</b><br>
+Exemplo:<br>
+<span class="math display">x^4 - 5x^2 + 4</span><br>
+Seja <span class="math inline">y = x^2</span>:<br>
+<span class="math display">y^2 - 5y + 4 = (y - 4)(y - 1)</span><br>
+Voltando à variável original:<br>
+<span class="math display">x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x - 2)(x + 2)(x - 1)(x + 1)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Expoente Negativo:</b><br>
+<span class="math display">x^{-n} = \dfrac{1}{x^n}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Fatoração de Frações Algébricas:</b><br>
+Exemplo:<br>
+<span class="math display">\dfrac{x^2 - 9}{x^2 - x - 6} = \dfrac{(x - 3)(x + 3)}{(x - 3)(x + 2)} = \dfrac{x + 3}{x + 2} \quad (x \ne 3)</span>
+</li>
+</ul>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p><strong>Regras de Derivação</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<strong>Constante:</strong> A derivada de uma constante é zero.<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( c \right) = 0</span> onde <span class="math inline">c</span> é uma constante;
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra da Potência:</strong> A derivada de <span class="math inline">x^n</span> é dada por <span class="math inline">n \cdot x^{n-1}</span>, onde <span class="math inline">n</span> é um número real; <span class="math display">\dfrac{\delta}{\delta x} \left( x^n \right) = n \cdot x^{n-1}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Derivada de uma Função Exponencial:</strong> A derivada de <span class="math inline">e^x</span> é simplesmente <span class="math inline">e^x</span>; <span class="math display">\dfrac{\delta}{\delta x} \left( e^x \right) = e^x</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Derivada do Logaritmo Natural:</strong> A derivada de <span class="math inline">\log(x)</span> é <span class="math inline">\dfrac{1}{x}</span>;<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \log(x) \right) = \dfrac{1}{x}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra do Produto:</strong> A derivada de um produto de duas funções <span class="math inline">f(x)</span> e <span class="math inline">g(x)</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( f(x) \cdot g(x) \right) = f'(x) \cdot g(x) + f(x) \cdot g'(x)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra do Quociente:</strong> A derivada de um quociente de duas funções <span class="math inline">f(x)</span> e <span class="math inline">g(x)</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \dfrac{f(x)}{g(x)} \right) = \dfrac{g(x) \cdot f'(x) - f(x) \cdot g'(x)}{g(x)^2}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra da Cadeia:</strong> A derivada de uma função composta <span class="math inline">f(g(x))</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( f(g(x)) \right) = f'(g(x)) \cdot g'(x)</span>
+</li>
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $sin(x)$:** A derivada de $sin(x)$ é $cos(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin(x) \right) = \cos(x)$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $cos(x)$:** A derivada de $cos(x)$ é $-sin(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos(x) \right) = -\sin(x)$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $tan(x)$:** A derivada de $tan(x)$ é $\sec^2(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \tan(x) \right) = \sec^2(x)$; -->
+<!-- </li> -->
+<li style="margin-bottom: 10px;">
+<strong>Derivada de <span class="math inline">\dfrac{1}{x}</span> é <span class="math inline">-\dfrac{1}{x^2}</span>;</strong><br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \frac{1}{x} \right) = -\dfrac{1}{x^2}</span>
+</li>
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\sin^{-1}(x)$:** A derivada de $\sin^{-1}(x)$ é $\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin^{-1}(x) \right) = \dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\cos^{-1}(x)$:** A derivada de $\cos^{-1}(x)$ é $-\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos^{-1}(x) \right) = -\dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
 <div style="text-align: justify">
 <p>Para cada distribuição da variável aleatória <span class="math inline">Y</span> a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança <span class="math inline">\mu</span>, a função de variância <span class="math inline">V(\mu)</span> e a variância de <span class="math inline">Y</span>.</p>
 <p><br></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Binomial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Dirichlet</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Binomial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Dirichlet</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p><span class="math display">
 f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
 </span></p>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p><span class="math display">
 P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
 </span></p>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p><span class="math display">
 P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
 </span></p>
 </div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <p><span class="math display">
 f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i=1}^{k} \alpha_i \right)}{\prod_{i=1}^{k} \Gamma(\alpha_i)} \prod_{i=1}^{k} x_i^{\alpha_i - 1}, \quad \text{para } x_i \geq 0 \text{ e } \sum_{i=1}^{k} x_i = 1.
 </span></p>
@@ -352,9 +701,9 @@ f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i
 <section id="prática" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="prática"><span class="header-section-number">2</span> Prática</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exemplo de código em R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Exemplo de código em Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Exemplo de código em R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Exemplo de código em Python</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fizz_buzz <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">fbnums =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    fbnums <span class="sc">%%</span> <span class="dv">15</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"FizzBuzz"</span>,</span>
@@ -365,7 +714,7 @@ f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(output)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizz_buzz(num):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> <span class="dv">15</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"FizzBuzz"</span>)</span>
