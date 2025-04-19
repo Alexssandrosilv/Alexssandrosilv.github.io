@@ -11,6 +11,8 @@ website:
         text: Introdução à Mineração de Dados (IMD)
       - href: resumo.qmd
         text: Resumo
+      - href: about.qmd
+        text: Sobre 
 
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
