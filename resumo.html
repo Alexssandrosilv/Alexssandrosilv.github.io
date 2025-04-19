@@ -8,7 +8,7 @@
 
 <meta name="author" content="Alexssandro da Silva Oliveira - Acadêmico de Estatística">
 
-<title>MODELOS LINEARES GENERALIZADOS - MLG</title>
+<title>INTRO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./mlg.html" aria-current="page"> 
+    <a class="nav-link" href="./mlg.html"> 
 <span class="menu-text">Modelos Lineares Generalizados (MLG)</span></a>
   </li>  
   <li class="nav-item">
@@ -138,7 +138,7 @@ window.Quarto = {
 <span class="menu-text">Introdução à Mineração de Dados (IMD)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resumo.html"> 
+    <a class="nav-link active" href="./resumo.html" aria-current="page"> 
 <span class="menu-text">Resumo</span></a>
   </li>  
   <li class="nav-item">
@@ -157,28 +157,15 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Sumário</h2>
-   
-  <ul>
-  <li><a href="#família-exponencial-canônica" id="toc-família-exponencial-canônica" class="nav-link active" data-scroll-target="#família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</a>
-  <ul class="collapse">
-  <li><a href="#família-exponencial-biparamétrica" id="toc-família-exponencial-biparamétrica" class="nav-link" data-scroll-target="#família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</a></li>
-  <li><a href="#família-exponencial-uniparamétrica" id="toc-família-exponencial-uniparamétrica" class="nav-link" data-scroll-target="#família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</a></li>
-  <li><a href="#distribuição-da-amostra-função-de-verossmilhança" id="toc-distribuição-da-amostra-função-de-verossmilhança" class="nav-link" data-scroll-target="#distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</a></li>
-  <li><a href="#função-de-log-verossmilhança" id="toc-função-de-log-verossmilhança" class="nav-link" data-scroll-target="#função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">1.5</span> Exercícios</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MODELOS LINEARES GENERALIZADOS - MLG</h1>
+<h1 class="title">INTRO</h1>
 </div>
 
 
@@ -202,268 +189,404 @@ window.Quarto = {
 
 
 <p><br></p>
-<section id="família-exponencial-canônica" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
-<p><br></p>
-<section id="família-exponencial-biparamétrica" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</h3>
-<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📝 Nota: Colinha 🙂👍
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <div style="text-align: justify">
-<p>Dizemos que uma variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial biparamétrica na forma canônica, <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, se sua função densidade (ou de probabilidade) pode ser expressa por</p>
-<p><br></p>
-<p><span class="math display">
-f(y;\theta,\phi) = \exp\left\{ \phi \left[y\theta - b(\theta)  \right] + c(y, \phi) \right\} \mathbb{I}_A(y)
-</span></p>
-<p>Em que as componentes são:</p>
-<ul style="margin-left: 50px;">
-<li style="margin-bottom: 10px;">
-<p><span class="math inline">\theta \in \mathbb{R}</span> é o <strong>parâmetro canônico</strong> da FE;</p>
+<p><strong>Contexto:</strong></p>
+<p>Os números desempenham um papel de vital importância não apenas na Matemática e nas Ciências de forma geral, mas também em nosso cotidiano. Estamos constantemente cercados por números: horários, tabelas, gráficos, preços, juros, impostos, velocidades, distâncias, temperaturas, entre outros.</p>
+<p><span class="math display">\textcolor{blue}{\mathbb{R}} = \{\text{Conjunto de todos os números racionais e irracionais}\}</span></p>
+<p>O conjunto de todos os <span class="math inline">\textcolor{blue}{\text{números reais}}</span> é representado pelo símbolo <span class="math inline">\textcolor{blue}{\mathbb{R}}</span>. Presume-se que suas propriedades fundamentais já sejam de conhecimento prévio. Esse conjunto abriga subconjuntos de fundamental importância, os quais surgiram a partir das necessidades humanas de resolver problemas práticos ao longo da história.</p>
+<p><strong>Conjunto dos Números Naturais:</strong></p>
+<p><span class="math display">\textcolor{blue}{\mathbb{N}} = \{1, 2, 3, \ldots\}</span></p>
+<p>Surgiu da necessidade da contagem, que se realiza por meio da operação de fazer corresponder. A ideia de correspondência é uma das ideias fundamentais de toda a Matemática. Contar significa estabelecer uma correspondência, um a um, entre cada item de uma coleção qualquer de objetos e a sucessão dos números naturais.</p>
+<p>Na sucessão dos números naturais, podemos passar de um número para o seguinte, juntando-lhe uma unidade. Assim, passamos do 1 para o 2, do 2 para o 3, e, dessa maneira, podemos ir tão longe quanto quisermos. Isto é, dado um número <span class="math inline">n</span> qualquer, por maior que ele seja, podemos sempre obter um número <span class="math inline">n+1</span>, maior do que ele. Esse fato pode ser expresso por qualquer dos seguintes enunciados:</p>
+<ul>
+<li>
+<b>(a)</b> A sucessão dos números naturais é ilimitada (não há um número natural maior que todos os outros);
 </li>
-<li style="margin-bottom: 10px;">
-<p><span class="math inline">\phi &gt; 0</span> é o <strong>parâmetro de precisão</strong>;</p>
+<li>
+<b>(b)</b> Dado um número natural, por maior que ele seja, existe sempre outro maior do que ele;
 </li>
-<li style="margin-bottom: 10px;">
-<p><span class="math inline">b(\cdot)</span> é uma função real, contínua e duas vezes diferenciável;</p>
-</li>
-<li style="margin-bottom: 10px;">
-<p><span class="math inline">c(\cdot\,;\cdot)</span> é uma função real não negativa;</p>
-</li>
-<li style="margin-bottom: 10px;">
-<p><span class="math inline">A</span> é o suporte da distribuição de <span class="math inline">Y</span>, que não deve depender dos parâmetros, nem de <span class="math inline">\theta</span> nem de <span class="math inline">\phi</span>.</p>
+<li>
+<b>(c)</b> Há uma infinidade de números naturais.
 </li>
 </ul>
-<p><br></p>
-</div>
-</section>
-<section id="família-exponencial-uniparamétrica" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</h3>
-<p><br></p>
-<div style="text-align: justify">
-<p>Note que, ao considerarmos o parâmetro de precisão <span class="math inline">\phi = 1</span>, diz-se que a variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial uniparamétrica. Ou seja, <span class="math inline">Y \sim \text{FE}(\theta)</span>, se sua função densidade (ou de probabilidade) puder ser expressa por</p>
-<p><br></p>
+<p><strong>Conjunto dos Números Inteiros:</strong></p>
 <p><span class="math display">
-f(y;\theta,\phi) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
+\textcolor{blue}{\mathbb{Z}} = \left\{ n \in \mathbb{Q} \;\middle|\; n = \frac{m}{1},\ m \in \mathbb{N} \cup \{0\} \cup (-\mathbb{N}) \right\}
 </span></p>
+<p><span class="math display">\text{Ou}</span></p>
+<p><span class="math display">\textcolor{blue}{\mathbb{Z}} = \{\ldots, -3,-2 ,-1,0 ,1, 2, 3, \ldots\}</span></p>
+<p>Uma das deficiências apresentadas pelo conjunto dos números naturais <span class="math inline">\textcolor{blue}{\mathbb{N}}</span> é a impossibilidade da subtração. Esta deficiência dos naturais foi sanada ampliando-se esse conjunto e formando-se o conjunto dos números inteiros denotado pelo simbolo <span class="math inline">\textcolor{blue}{\mathbb{Z}}</span>.</p>
+<p><strong>Conjunto dos Números Racionais:</strong></p>
+<p><span class="math display">\textcolor{blue}{\mathbb{Q}} = \left\{ \frac{m}{n} \;\middle|\; m \in \mathbb{Z},\ n \in \mathbb{Z}^*,\ n \neq 0 \right\}</span></p>
+<p>Assim como os números naturais surgiram da necessidade de contar, os números racionais, que são expressos pela razão entre dois inteiros, surgiram da necessidade de medir.</p>
+<p>Medir é comparar. Para isso é necessário estabelecer um padrão de comparação para todas as grandezas da mesma espécie, por exemplo, 1 cm para comprimento, 1 segundo para tempo, etc.</p>
+<p>No conjunto dos números inteiros <span class="math inline">\textcolor{blue}{\mathbb{Z}}</span>, existe a impossibilidade da divisão, isto é, neste conjunto nem sempre é possível expressar o resultado de uma medição ou de uma razão.</p>
+<p>Para resolver este problema, criou-se um novo conjunto de números, chamado conjunto dos números racionais, denotado pelo símbolo <span class="math inline">\textcolor{blue}{\mathbb{Q}}</span> (de quociente ). Um número racional <span class="math inline">p</span> é, portanto, aquele que pode ser escrito na forma:</p>
+<p><span class="math display">p = \dfrac{m}{n}</span></p>
+<p>Onde <span class="math inline">m</span> e <span class="math inline">n</span> são inteiros e <span class="math inline">n \neq 0</span>. (Lembre-se que a divisão por zero não tem sentido, pois não existe nenhum número que multiplicado por zero seja diferente de 0; portanto, expressões do tipo <span class="math inline">\frac{3}{0}</span> não estão definidas e expressões do tipo <span class="math inline">\frac{0}{0}</span> são indeterminadas.)</p>
+<p><strong>Relações entre os conjuntos:</strong></p>
+<p><span class="math display">\textcolor{blue}{\mathbb{N}} \subset \textcolor{blue}{\mathbb{Z}} \subset \textcolor{blue}{\mathbb{Q}} \subset \textcolor{blue}{\mathbb{R}}</span></p>
+<p>Logo a relação entre os subconjuntos indica que:</p>
+<ul>
+<li>
+<span class="math inline">\textcolor{blue}{\mathbb{N}}</span> (Números Naturais) está contido em <span class="math inline">\textcolor{blue}{\mathbb{Z}}</span> (Números Inteiros),
+</li>
+<li>
+<span class="math inline">\textcolor{blue}{\mathbb{Z}}</span> (Números Inteiros) está contido em <span class="math inline">\textcolor{blue}{\mathbb{Q}}</span> (Números Racionais),
+</li>
+<li>
+<span class="math inline">\textcolor{blue}{\mathbb{Q}}</span> (Números Racionais) está contido em <span class="math inline">\textcolor{blue}{\mathbb{R}}</span> (Números Reais).
+</li>
+</ul>
 </div>
-<p><br></p>
-</section>
-<section id="distribuição-da-amostra-função-de-verossmilhança" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</h3>
-<p><br></p>
-<div style="text-align: justify">
-<p>Seja <span class="math inline">\bm{Y} = (Y_{1},Y_{2},\cdots , Y_{n})</span> uma amostra aleatória de variáveis aleatórias independentes provenientes de uma população <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, tal que a função densidade (ou de probabilidade) de cada <span class="math inline">\bm{Y_{i}}</span>, com <span class="math inline">i = 1 ,\cdots , n</span> é dada por</p>
-<p><br></p>
-<p><span class="math display">
-f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \right] + c(y_{i}, \phi) \right\} \mathbb{I}_A(y) \quad \quad \theta \in \mathbb{R}, \quad \phi &gt; 0
-</span></p>
-<p><br> Logo a função de verossimilhança, com representação da <strong>FE</strong> é dada por</p>
-<p><br></p>
-<p><span class="math display">
-\begin{aligned}
-\mathcal{L}(\boldsymbol{\theta},\phi)
-&amp;= \prod_{i = 1}^{n} f(y_{i};\theta_{i},\phi) \\
-&amp;= \prod_{i = 1}^{n} \exp\left\{ \phi \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + c(y_{i}, \phi) \right\} \\
-&amp;= \exp\left\{ \phi \left[y_{1}\theta_{1} - b(\theta_{1})  \right] + c(y_{1}, \phi) \right\} \times \cdots \times \exp\left\{ \phi \left[y_{n}\theta_{n} - b(\theta_{n})  \right] + c(y_{n}, \phi) \right\} \\
-&amp;= \exp\left\{ \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi) \right\}
-\end{aligned}
-</span></p>
 </div>
-</section>
-<section id="função-de-log-verossmilhança" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</h3>
-<p><br></p>
-<div style="text-align: justify">
-<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por <br></p>
-<p><span class="math display">
-\begin{aligned}
-\mathcal{\ell}(\boldsymbol{\theta},\phi)  
-&amp;= \log \left\{ \mathcal{L}(\boldsymbol{\theta},\phi) \right\} \\
-&amp;= \log \left\{ \exp\left\{ \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi) \right\} \right\}\\
-&amp;= \phi \sum_{i=1}^{n} \left[y_{i}\theta_{i} - b(\theta_{i})  \right] + \sum_{i=1}^{n} c(y_{i}, \phi)
-\end{aligned}
-</span></p>
 </div>
-<p><br></p>
-</section>
-<section id="exercícios" class="level3" data-number="1.5">
-<h3 data-number="1.5" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">1.5</span> Exercícios</h3>
-<p><br></p>
-<div style="text-align: justify">
-<p>Para cada distribuição da variável aleatória <span class="math inline">Y</span> a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança <span class="math inline">\mu</span>, a função de variância <span class="math inline">V(\mu)</span> e a variância de <span class="math inline">Y</span>.</p>
-<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📝 COLINHA: Resultados Matemáticos Importantes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div style="text-align: justify;">
+<p>É fundamental ter familiaridade com alguns resultados clássicos da Matemática, especialmente aqueles que facilitam a manipulação algébrica de expressões em contextos estatísticos. Abaixo, apresenta-se um breve resumo — uma espécie de “colinha” — com resultados essenciais que devem ser compreendidos para a realização das atividades propostas.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">b) Binomial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">c) Binomial Negativa</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">d) Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">e) Gamma</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">f) Normal Inversa</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">Dirichlet</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">🧠 <strong>Função Logarítmica</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🧠 <strong>Raiz</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">🧠 <strong>Operações com Raízes</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">🧠 <strong>Fatoração</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">🧠 <strong>Derivadas</strong></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div style="text-align: justify">
-<p><strong><span class="math inline">\textcolor{blue}{\text{Sobre o problema:}}</span></strong></p>
-<p>A variável aleatória <span class="math inline">Y</span> segue uma distribuição de Poisson com taxa de crescimento <span class="math inline">\mu</span>. Sua função de probabilidade (função massa de probabilidade) é dada por:</p>
-<p><br></p>
-<p><span class="math display">
-f(y;\mu) = \frac{\mu^{y} e^{-\mu}} {y!}  \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y) \quad \mu &gt; 0
-</span> <br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo I: Importante, seja observador(a) 👀:}}</span></strong></p>
-<p><strong>Função Indicadora (suporte da variável aleatória):</strong> Note que o suporte da variável aleatória não depende de nenhum parâmetro. Como discutido anteriormente, esta dependência representaria um empecilho, pois, nesse caso, a função de probabilidade não se encaixaria na forma da família exponencial canônica. No entanto, o fato de o suporte não depender de <span class="math inline">\theta</span> nem de <span class="math inline">\phi</span> não garante que a função de probabilidade pertença à família exponencial canônica. Iremos tentar parametrizá-la e, caso não seja possível, justificaremos a impossibilidade.</p>
-<p><strong>Média:</strong> Veja se consegue identificar a média do modelo explicitamente na função densidade (ou probabilidade). Lembre-se de que estamos interessados na média da distribuição, pois ela é o parâmetro que aparece na forma canônica da família exponencial — o chamado parâmetro canônico denotado por <span class="math inline">\theta</span>. Quando trabalhamos com a família exponencial canônica, um dos grandes trunfos dessa abordagem é que podemos relacionar diretamente a média da distribuição com os preditores por meio de uma função de ligação, o que será fundamental para a construção dos Modelos Lineares Generalizados (GLMs).</p>
-<p>Caso a média não esteja explícita na função densidade, pode ser necessário realizar algumas manipulações adicionais para expressá-la de forma que possamos parametrizar corretamente. Essas transformações garantem que conseguimos aplicar a estrutura da família exponencial canônica da maneira adequada.</p>
-<p>Por isso, é fundamental termos informações detalhadas sobre a distribuição com a qual estamos trabalhando. Essas informações são essenciais para entendermos como os parâmetros se relacionam e para identificarmos a média da distribuição.”</p>
-<p><strong>Parametrização:</strong> Ops, quase me esqueci 😔😶! Lembre-se de que existem duas formas de <strong>parametrização na família exponencial</strong> em sua forma canônica: a <strong>uniparamétrica</strong> e a <strong>biparamétrica</strong>. Para definir qual utilizar, é necessário observar o modelo em questão. Como estamos lidando com o modelo de <strong>Poisson</strong>, que possui apenas um parâmetro, adotaremos a parametrização uniparamétrica (Neste exemplo).</p>
-<p>Nesse caso, o parâmetro de precisão, denotado por <span class="math inline">\phi</span>, é assumido igual a 1.</p>
-<p><br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo II: Parametrização da família exponencial canônica.}}</span></strong></p>
-<p>Agora, vamos deixar a enrolação de lado e tentar parametrizar essa função densidade (ou de probabilidade). Segure minha mão e vamos juntos nessa jornada 🙂 — com confiança! 😎</p>
-<p>Dizemos que <span class="math inline">Y</span> pertence à família exponencial uniparamétrica se for possível expressar sua função densidade (ou função de probabilidade, no caso discreto) na forma:</p>
-<p><br></p>
-<p><span class="math display">
-f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
-</span> <br></p>
-<!-- Vamos usar a seguinte notação para representar a distribuição: $Y \sim \text{FE}(\theta)$ -->
-<p>A priori, é importante fazermos uso de algumas propriedades logarítmicas.</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log\left[f(y;\mu)\right] \right\} </span></p>
-<p><br></p>
-<p>Veja bem 👀, não alteramos a expressão ao aplicar a função exponencial ao logaritmo. Essa operação será útil e importante para a parametrização da função densidade (ou função de probabilidade). Aplicando <span class="math inline">exp\left\{ \log\left[f(y;\mu)\right] \right\}</span>, estamos utilizando a propriedade fundamental dos logaritmos e exponenciais, ou seja, <span class="math inline">exp(\log(x)) = x</span>, o que nos permite manipular a expressão sem alterar seu valor. Isso facilita a parametrização sem modificar a essência da função.</p>
-<p>Agora, basta substituirmos na expressão acima pela função de probabilidade da distribuição de Poisson.</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log\left[ \frac{\mu^{y} e^{-\mu}} {y!}  \right] \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span></p>
-<p><br></p>
-<p>Aplicando o logaritmo em cada termo da função e utilizando a propriedade <span class="math inline">\log\left(\dfrac{a}{b}\right) = \log(a) - \log(b)</span>, onde <span class="math inline">a = \mu^{y} e^{-\mu}</span> e <span class="math inline">b = y!</span> obtemos:</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log (\mu^{y}e^{-\mu}) - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span></p>
-<p><br></p>
-<p>Aplicando a propriedade logarítmica <span class="math inline">\log\left(a \cdot b\right) = \log(a) + \log(b)</span>, com <span class="math inline">a = \mu^{y}</span> e <span class="math inline">b = e^{-\mu}</span>, podemos reescrever <span class="math inline">\log(\mu^{y} e^{-\mu})</span> como sendo <span class="math inline">\log(\mu^{y}) + \log(e^{-\mu})</span>, portanto.</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log(\mu^{y}) + \log(e^{-\mu}) - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo III: Momento de Reflexão 🤨, Veja Bem 👀}}</span></strong></p>
-<p><strong>Uma dúvida comum é: como saber se estou no caminho correto?</strong></p>
-<p>Lembre-se da estrutura da parametrização da família exponencial uniparamétrica. Estamos tentando reescrever <span class="math inline">f(y;\mu)</span> nessa forma específica. Ou seja, precisamos manipular a expressão de modo que os componentes característicos dessa família apareçam</p>
-<p><br> <span class="math display">
-f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
-</span> <br></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-📝 Motivação ❤️💵✈️
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Eu sei, parece bem confuso 😔… mas, assim como nas grandes histórias de amor, às vezes tudo começa com dúvidas e incertezas, até que, pouco a pouco, cada peça encontra seu lugar. A matemática e a estatística, como o amor, florescem quando temos paciência e acreditamos que tudo fará sentido no final. 💌✨ Basta dar o seu melhor.</p>
-<p>E se não fizer sentido, a gente faz algo não paramétrico mesmo, né? 😜 (Dorme que amanhã é outro dia)</p>
-</div>
-</div>
-<p><br></p>
-<p><br></p>
-<p><strong>Continuando o raciocínio</strong></p>
-<p>Estamos quase lá 🙂👍! Ao observarmos a expressão, podemos notar que ainda precisamos de um <span class="math inline">y</span> multiplicando um <span class="math inline">\theta</span>, não é mesmo? Lembre-se da dica sobre a média: a média da distribuição de Poisson é denotada por <span class="math inline">\mu</span>. Agora, se aplicarmos mais propriedades logarítmicas, podemos usar a regra <span class="math inline">\log(a^b) = b \log(a)</span>, ou seja, <span class="math inline">\log(\mu^y) = y \log(\mu)</span>. Além disso, podemos reescrever <span class="math inline">\log(e^{-\mu})</span> simplesmente como <span class="math inline">-\mu</span>, já que, como discutido anteriormente, <span class="math inline">\log(e^a) = a</span>.</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{y \log(\mu) -\mu - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <br></p>
-<p>Olha que mágico! ✨ Vamos comparar as duas expressões agora:</p>
-<p><br></p>
-<p><span class="math display"> f(y;\mu)\ = exp\left\{y \log(\mu) -\mu - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <span class="math display">f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)</span></p>
-<p><br></p>
-<p>Que incrível 🤗!</p>
-<p><br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo IV: Identificar as componentes}}</span></strong></p>
-<p>Logo as componentes são:</p>
-<ul style="margin-left: 50px;">
+<p><strong>Propriedades e Resultados provenientes da Função Logarítmica (Base Neperiana)</strong></p>
+<ul style="margin-left: 40px;">
 <li style="margin-bottom: 10px;">
-<p><span class="math inline">\theta = \log(\mu)</span> é o <strong>parâmetro canônico</strong> da FE;</p>
+<span class="math inline">\log(a \cdot b) =  \log(a) + \log(b)</span>;
 </li>
 <li style="margin-bottom: 10px;">
-<p><span class="math inline">\phi = 1</span> é o <strong>parâmetro de precisão</strong>;</p>
+<span class="math inline">\log\left( \dfrac{a}{b} \right) =  \log(a) - \log(b)</span>;
 </li>
 <li style="margin-bottom: 10px;">
-<p><span class="math inline">b(\theta) =  e^{\theta}</span></p>
-<p><span class="math display">\text{De modo que} \quad \theta = \log \mu \quad \Rightarrow \quad e^\theta = \mu</span></p>
+<span class="math inline">\log(a^{b}) =  b \cdot \log(a)</span>;
 </li>
 <li style="margin-bottom: 10px;">
-<p><span class="math inline">c(y) = \log y!</span></p>
+<span class="math inline">\log(e^{a}) =  a</span>;
 </li>
 <li style="margin-bottom: 10px;">
-<span class="math inline">A(y) =  \mathbb{Z^{+}}</span> é o suporte da distribuição de <span class="math inline">Y</span>, que não depende dos parâmetros.
+<span class="math inline">e^{a+b} =  e^{a} \times e^{b}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a} e^{a} =  e^{a}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a}\log \left(a \right) =  \dfrac{1}{a}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta a}\log \left( g(a) \right) =  \dfrac{1}{g(a)} \times \dfrac{\delta}{\delta a} g(a)</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\log(1) = 0</span>;
 </li>
 </ul>
-<p><br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo V: Propriedades da FE Canônica}}</span></strong></p>
-<p><strong>Condição (Suporte):</strong></p>
-<p><span class="math display">\text{Resultado:} \quad A(y)  \quad \text{não pode depende dos parâmetros}</span></p>
-<p><span class="math display">\text{Prova:} \quad A(y) =  \mathbb{Z^{+}}</span></p>
-<p><br></p>
-<p><strong>Condição de Primeira Ordem (Derivada Primeira de <span class="math inline">b(\theta)</span>):</strong></p>
-<p><span class="math display">\text{Resultado:} \quad b'(\theta) = \dfrac{\delta b(\theta)}{\delta \theta} = \mathbb{E}[X] = \mu</span></p>
-<p><span class="math display">\text{Prova:} \quad b'(\theta) = \dfrac{\delta b(\theta)}{\delta \theta} = \dfrac{\delta e^\theta}{\delta \theta} = e^\theta \quad \Rightarrow \quad e^\theta = \mu</span> <br></p>
-<p><strong>Condição de Segunda Ordem (Derivada Segunda de <span class="math inline">b(\theta)</span>):</strong></p>
-<p><span class="math display">\text{Resultado:} \quad b''(\theta) = \dfrac{\delta^2 b(\theta)}{\delta \theta} = \dfrac{\delta \mu}{\delta \theta} = V(\mu) = \mu</span></p>
-<p><span class="math display">\text{Prova:} \quad b''(\theta) = \dfrac{\delta^2 b(\theta)}{\delta \theta} = \dfrac{\delta \mu}{\delta \theta} = \dfrac{\delta e^\theta}{\delta \theta} = e^\theta  \quad \Rightarrow \quad e^\theta = \mu</span></p>
-<p>Onde <span class="math inline">V(\mu)</span> é chamada função de variância e <span class="math inline">\phi</span> recebe o nome de parâmetro de precisão porque quanto maior a variância de Y , menor será o seu valor.</p>
-<p><strong>Conclusão</strong></p>
-<p>A variável aleatória <span class="math inline">Y</span> segue uma distribuição de Poisson com taxa de crescimento <span class="math inline">\mu</span>, ou seja, <span class="math inline">Y \sim \text{Poisson}(\mu)</span>. Como demonstramos, é possível reescrever sua função de probabilidade na forma canônica da família exponencial uniparamétrica.</p>
-<p>Logo, <span class="math inline">Y</span> pertence à família exponencial com parâmetro canônico <span class="math inline">\theta = \log(\mu)</span>, isto é:<br>
-<span class="math display">
-Y \sim \text{FE}(\theta)
-</span></p>
-<p><br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo VI: Distribuição da Amostra (Função de Verossmilhança)}}</span></strong></p>
-<p><br></p>
-<p><strong><span class="math inline">\textcolor{blue}{\text{Passo VII: Função de Log-Verossmilhança}}</span></strong></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Informação importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Note que até o momento fizemos tudo com bastante calma, explicando cada detalhe com carinho e atenção. 💙<br>
-Mas agora, para não alongarmos demais, vamos acelerar um pouquinho nas contas, tá bom? Prometo que, mesmo assim, vamos continuar com cuidado e sem deixar você perdido. 🙂😊✌️<br>
-Se algo parecer confuso, respira fundo — você pode voltar e rever com calma quando quiser. Estamos juntos nessa jornada! ✨</strong></p>
-</div>
-</div>
-<p><br></p>
-</div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><span class="math display">
-P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
-</span></p>
+<p><strong>Resultados provenientes das Funções de Raiz</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{a^b} = a^{\frac{b}{2}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt[n]{a} = a^{\frac{1}{n}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta x} \sqrt{x} = \frac{1}{2\sqrt{x}}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\dfrac{\delta}{\delta x} \sqrt[n]{x} = \frac{1}{n} x^{\frac{1}{n} - 1}</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{1} = 1</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{0} = 0</span>;
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">\sqrt{-1}</span> não é um número real (representa a unidade imaginária <span class="math inline">i</span>);
+</li>
+</ul>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p><span class="math display">
-P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
-</span></p>
+<p><strong>Propriedades e Operações Fundamentais com Radicais</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<b>Produto de radicais com mesmo índice:</b><br>
+<span class="math display">
+\sqrt[n]{a} \cdot \sqrt[n]{b} = \sqrt[n]{a \cdot b}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Divisão de radicais com mesmo índice:</b><br>
+<span class="math display">
+\frac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\frac{a}{b}}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radiciação de potências:</b><br>
+<span class="math display">
+\sqrt[n]{a^m} = a^{\frac{m}{n}}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radical de radical:</b><br>
+<span class="math display">
+\sqrt[n]{\sqrt[m]{a}} = \sqrt[n \cdot m]{a}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Racionalização de denominadores:</b><br>
+<span class="math display">
+\frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Racionalização com binômio conjugado:</b><br>
+<span class="math display">
+\frac{1}{\sqrt{a} + \sqrt{b}} = \frac{\sqrt{a} - \sqrt{b}}{a - b}
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Multiplicação de conjugados:</b><br>
+<span class="math display">
+(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b
+</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Extração de fator de dentro da raiz:</b><br>
+<span class="math display">
+\sqrt{a^2 \cdot b} = a \cdot \sqrt{b}
+</span><br>
+(se <span class="math inline">a \geq 0</span>)
+</li>
+<li style="margin-bottom: 10px;">
+<b>Radiciação de frações:</b><br>
+<span class="math display">
+\sqrt[n]{\frac{a^m}{b^k}} = \frac{a^{\frac{m}{n}}}{b^{\frac{k}{n}}}
+</span>
+</li>
+</ul>
+<!-- ## 🧠  **Funções** -->
+<!-- **Definição e Propriedades Básicas das Funções** -->
+<!-- <ul style="margin-left: 40px;"> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função:</b> é uma relação entre dois conjuntos, onde a cada elemento do domínio está associado um único elemento do contradomínio.   -->
+<!-- $$ -->
+<!-- f: A \rightarrow B \quad \text{tal que} \quad f(x) = y -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Identidade:</b>   -->
+<!-- $$ -->
+<!-- f(x) = x -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Constante:</b>   -->
+<!-- $$ -->
+<!-- f(x) = c \quad \text{com } c \in \mathbb{R} -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Afim (ou Linear):</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax + b -->
+<!-- $$   -->
+<!-- Com $a$ como coeficiente angular e $b$ como coeficiente linear; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Quadrática:</b>   -->
+<!-- $$ -->
+<!-- f(x) = ax^2 + bx + c -->
+<!-- $$   -->
+<!-- Tem gráfico em forma de parábola. -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Modular:</b>   -->
+<!-- $$ -->
+<!-- f(x) = |x| =  -->
+<!-- \begin{cases} -->
+<!-- x, & \text{se } x \geq 0 \\ -->
+<!-- -x, & \text{se } x < 0 -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Exponencial:</b>   -->
+<!-- $$ -->
+<!-- f(x) = a^x \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Logarítmica:</b>   -->
+<!-- $$ -->
+<!-- f(x) = \log_a(x) \quad \text{com } a > 0 \text{ e } a \neq 1 -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Composta:</b>   -->
+<!-- Se $f(x)$ e $g(x)$ são funções, então a função composta $f(g(x))$ é dada por:   -->
+<!-- $$ -->
+<!-- (f \circ g)(x) = f(g(x)) -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- <b>Função Inversa:</b>   -->
+<!-- Se $f(x) = y$, então a função inversa $f^{-1}(x)$ satisfaz:   -->
+<!-- $$ -->
+<!-- f^{-1}(y) = x -->
+<!-- $$   -->
+<!-- e   -->
+<!-- $$ -->
+<!-- f(f^{-1}(x)) = f^{-1}(f(x)) = x -->
+<!-- $$ -->
+<!-- </li> -->
+<!-- </ul> -->
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<p><span class="math display">
-f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
-</span></p>
+<p><strong>Técnicas de Fatoração de Expressões Algébricas</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<b>Fator Comum:</b> Extrai-se o maior fator comum entre os termos.<br>
+<span class="math display">ab + ac = a(b + c)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Agrupamento:</b> Agrupa-se os termos em pares que permitam evidenciar fator comum.<br>
+<span class="math display">ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Diferença de Quadrados:</b><br>
+<span class="math display">a^2 - b^2 = (a - b)(a + b)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Soma):</b><br>
+<span class="math display">a^2 + 2ab + b^2 = (a + b)^2</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Trinômio Quadrado Perfeito (Diferença):</b><br>
+<span class="math display">a^2 - 2ab + b^2 = (a - b)^2</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Cubo da Soma:</b><br>
+<span class="math display">(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Cubo da Diferença:</b><br>
+<span class="math display">(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Soma de Cubos:</b><br>
+<span class="math display">a^3 + b^3 = (a + b)(a^2 - ab + b^2)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Diferença de Cubos:</b><br>
+<span class="math display">a^3 - b^3 = (a - b)(a^2 + ab + b^2)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Fatoração com Mudança de Variável:</b><br>
+Exemplo:<br>
+<span class="math display">x^4 - 5x^2 + 4</span><br>
+Seja <span class="math inline">y = x^2</span>:<br>
+<span class="math display">y^2 - 5y + 4 = (y - 4)(y - 1)</span><br>
+Voltando à variável original:<br>
+<span class="math display">x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x - 2)(x + 2)(x - 1)(x + 1)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Expoente Negativo:</b><br>
+<span class="math display">x^{-n} = \dfrac{1}{x^n}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<b>Fatoração de Frações Algébricas:</b><br>
+Exemplo:<br>
+<span class="math display">\dfrac{x^2 - 9}{x^2 - x - 6} = \dfrac{(x - 3)(x + 3)}{(x - 3)(x + 2)} = \dfrac{x + 3}{x + 2} \quad (x \ne 3)</span>
+</li>
+</ul>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-<p><span class="math display">
-P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
-</span></p>
+<p><strong>Regras de Derivação</strong></p>
+<ul style="margin-left: 40px;">
+<li style="margin-bottom: 10px;">
+<strong>Constante:</strong> A derivada de uma constante é zero.<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( c \right) = 0</span> onde <span class="math inline">c</span> é uma constante;
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra da Potência:</strong> A derivada de <span class="math inline">x^n</span> é dada por <span class="math inline">n \cdot x^{n-1}</span>, onde <span class="math inline">n</span> é um número real; <span class="math display">\dfrac{\delta}{\delta x} \left( x^n \right) = n \cdot x^{n-1}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Derivada de uma Função Exponencial:</strong> A derivada de <span class="math inline">e^x</span> é simplesmente <span class="math inline">e^x</span>; <span class="math display">\dfrac{\delta}{\delta x} \left( e^x \right) = e^x</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Derivada do Logaritmo Natural:</strong> A derivada de <span class="math inline">\log(x)</span> é <span class="math inline">\dfrac{1}{x}</span>;<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \log(x) \right) = \dfrac{1}{x}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra do Produto:</strong> A derivada de um produto de duas funções <span class="math inline">f(x)</span> e <span class="math inline">g(x)</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( f(x) \cdot g(x) \right) = f'(x) \cdot g(x) + f(x) \cdot g'(x)</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra do Quociente:</strong> A derivada de um quociente de duas funções <span class="math inline">f(x)</span> e <span class="math inline">g(x)</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \dfrac{f(x)}{g(x)} \right) = \dfrac{g(x) \cdot f'(x) - f(x) \cdot g'(x)}{g(x)^2}</span>
+</li>
+<li style="margin-bottom: 10px;">
+<strong>Regra da Cadeia:</strong> A derivada de uma função composta <span class="math inline">f(g(x))</span> é dada por<br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( f(g(x)) \right) = f'(g(x)) \cdot g'(x)</span>
+</li>
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $sin(x)$:** A derivada de $sin(x)$ é $cos(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin(x) \right) = \cos(x)$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $cos(x)$:** A derivada de $cos(x)$ é $-sin(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos(x) \right) = -\sin(x)$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $tan(x)$:** A derivada de $tan(x)$ é $\sec^2(x)$.   -->
+<!-- $\dfrac{d}{dx} \left( \tan(x) \right) = \sec^2(x)$; -->
+<!-- </li> -->
+<li style="margin-bottom: 10px;">
+<strong>Derivada de <span class="math inline">\dfrac{1}{x}</span> é <span class="math inline">-\dfrac{1}{x^2}</span>;</strong><br>
+<span class="math display">\dfrac{\delta}{\delta x} \left( \frac{1}{x} \right) = -\dfrac{1}{x^2}</span>
+</li>
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\sin^{-1}(x)$:** A derivada de $\sin^{-1}(x)$ é $\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \sin^{-1}(x) \right) = \dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+<!-- <li style="margin-bottom: 10px;"> -->
+<!-- **Derivada de $\cos^{-1}(x)$:** A derivada de $\cos^{-1}(x)$ é $-\dfrac{1}{\sqrt{1 - x^2}}$, para $-1 < x < 1$.   -->
+<!-- $\dfrac{d}{dx} \left( \cos^{-1}(x) \right) = -\dfrac{1}{\sqrt{1 - x^2}}$; -->
+<!-- </li> -->
+</ul>
 </div>
-<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
-<p><span class="math display">
-P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n
-</span></p>
 </div>
-<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
-<p><span class="math display">
-f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i=1}^{k} \alpha_i \right)}{\prod_{i=1}^{k} \Gamma(\alpha_i)} \prod_{i=1}^{k} x_i^{\alpha_i - 1}, \quad \text{para } x_i \geq 0 \text{ e } \sum_{i=1}^{k} x_i = 1.
-</span></p>
+</div>
 </div>
 </div>
 </div>
 
 
-</div>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
