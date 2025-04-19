@@ -1,0 +1,56 @@
+---
+title: "INTRODUÇÃO À MINERAÇÃO DE DADOS - IMD"                           # --> Título principal do documento
+# subtitle: "Notações de Aula"                                           # --> Subtítulo (complementa o título)
+author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**"   # --> Nome do autor (com negrito usando Quarto)
+# date: ""                                                               # --> Data (em branco para não exibir nada)
+# date-format: short                                                     # --> Formato da data: curto (ex: 16/04/2025)
+lang: pt
+editor: visual                                                           # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
+---
+
+<br>
+
+## Prática
+
+```{r setup, include=FALSE}
+# Define opções padrão para todos os chunks de código no R Markdown
+knitr::opts_chunk$set(
+  echo = FALSE,         # Oculta o código nos resultados finais do documento
+  warning = FALSE,     # Suprime mensagens de aviso (warnings)
+  message = FALSE,     # Suprime mensagens informativas (como as de carregamento de pacotes)
+  fig.width = 10,      # Define a largura padrão das figuras (em polegadas)
+  fig.height = 6       # Define a altura padrão das figuras (em polegadas)
+)
+```
+
+::: panel-tabset
+## Exemplo de código em R
+
+``` r
+fizz_buzz <- function(fbnums = 1:50) {
+  output <- dplyr::case_when(
+    fbnums %% 15 == 0 ~ "FizzBuzz",
+    fbnums %% 3 == 0 ~ "Fizz",
+    fbnums %% 5 == 0 ~ "Buzz",
+    TRUE ~ as.character(fbnums)
+  )
+  print(output)
+}
+```
+
+## Exemplo de código em Python
+
+``` python
+def fizz_buzz(num):
+  if num % 15 == 0:
+  print("FizzBuzz")
+elif num % 5 == 0:
+  print("Buzz")
+elif num % 3 == 0:
+  print("Fizz")
+else:
+  print(num)
+```
+:::
+
+
