@@ -30,9 +30,9 @@ format:
     fontsize: 0.9em                                                    # --> Define o tamanho da fonte como 90% do padrão
     #linestretch: 1.7                                                   # --> Controla o espaçamento entre linhas
     #max-width: null                                                  # --> Define largura máxima MUITO ampla (pode ser ajustado para ~80em, se desejar)
-    margin-left: 0em                                                   # --> Margem esquerda do conteúdo (0 = sem margem)
-    margin-right: 0em                                                  # --> Margem direita do conteúdo (0 = sem margem)
-    margin-bottom: 0em                                                 # --> Margem inferior (sem espaço extra abaixo)
+    margin-left: 4em                                                   # --> Margem esquerda do conteúdo (0 = sem margem)
+    margin-right: 4em                                                  # --> Margem direita do conteúdo (0 = sem margem)
+    margin-bottom: 2em                                                 # --> Margem inferior (sem espaço extra abaixo)
     margin-top: -1em                                                   # --> Margem superior negativa (levemente "sobe" o conteúdo)
     #df_print: paged                                                    # --> Impressão paginada de dataframes, se ativado
     #highlight: espresso                                                # --> Tema de cores para realce de código (sintaxe)
