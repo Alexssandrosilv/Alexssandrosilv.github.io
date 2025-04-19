@@ -24,7 +24,7 @@ format:
     page-layout: custom 
     #toc-depth: 3                                                       # --> Quantos níveis hierárquicos de seções aparecerão no sumário
     html-math-method: katex                                            # --> Método de renderização matemática (KaTeX é leve e rápido)
-    toc-location: right                                                # --> Coloca o sumário à direita do conteúdo
+    #toc-location: right                                                # --> Coloca o sumário à direita do conteúdo
     number-sections: true                                              # --> Numera automaticamente as seções e subseções
     code-fold: true                                                    # --> Código-fonte recolhido por padrão (com opção de expandir)
     fontsize: 0.9em                                                    # --> Define o tamanho da fonte como 90% do padrão
@@ -37,7 +37,7 @@ format:
     #df_print: paged                                                    # --> Impressão paginada de dataframes, se ativado
     #highlight: espresso                                                # --> Tema de cores para realce de código (sintaxe)
     #smooth_scroll: TRUE                                                # --> Ativa rolagem suave
-    css: styles.css                                                   # --> Aponta para um arquivo personalizado de estilo (opcional, se existir)
+    #css: styles.css                                                   # --> Aponta para um arquivo personalizado de estilo (opcional, se existir)
     theme: 
       light: [flatly]                                                  # -----> Tema visual para o modo claro (Flatly: moderno e claro)
       dark: [cyborg]                                                   # -----> Tema visual para o modo escuro (Cyborg: fundo escuro e letras claras)
