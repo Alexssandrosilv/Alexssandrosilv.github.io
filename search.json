@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "mlg.html",
+    "href": "mlg.html",
+    "title": "MODELOS LINEARES GENERALIZADOS - MLG",
+    "section": "",
+    "text": ":: {style=“text-align: justify”} Para cada distribuição da variável aleatória Y a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança \\mu, a função de variância V(\\mu) e a variância de Y.\n:::"
+  },
+  {
     "objectID": "mlg.html#família-exponencial-canônica",
     "href": "mlg.html#família-exponencial-canônica",
     "title": "MODELOS LINEARES GENERALIZADOS - MLG",
