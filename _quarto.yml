@@ -9,16 +9,19 @@ website:
         text: Modelos Lineares Generalizados (MLG)
       - href: imd.qmd
         text: Introdução à Mineração de Dados (IMD)
+      - href: int_bayes.qmd
+        text: Introdução à Inferência Baeyesiana
       - href: resumo.qmd
-        text: Resumo
+        text: Lista de Café da Manhã
       - href: about.qmd
         text: Sobre 
 
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
-    toc: true                                                          # --> Ativa o sumário (índice)
+    toc: false                                                          # --> Ativa o sumário (índice)
     #toc-expand: 3                                                      # --> Define quantos níveis do sumário aparecem abertos por padrão
-    toc-title: Sumário                                                 # --> Título exibido no topo do sumário
+    #toc-title: Sumário                                                 # --> Título exibido no topo do sumário
+    page-layout: custom 
     #toc-depth: 3                                                       # --> Quantos níveis hierárquicos de seções aparecerão no sumário
     html-math-method: katex                                            # --> Método de renderização matemática (KaTeX é leve e rápido)
     toc-location: right                                                # --> Coloca o sumário à direita do conteúdo
