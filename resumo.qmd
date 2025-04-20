@@ -155,7 +155,7 @@ $\sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b}$;
 </li>
 
 <li style="margin-bottom: 10px;">
-$\sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}$;
+$\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}$;
 </li>
 
 <li style="margin-bottom: 10px;">
