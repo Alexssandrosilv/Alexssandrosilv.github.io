@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alexssandro da Silva Oliveira - Acadêmico de Estatística">
 
-<title>MODELOS LINEARES GENERALIZADOS - MLG</title>
+<title>mlg</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -177,31 +176,9 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">MODELOS LINEARES GENERALIZADOS - MLG</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p><strong>Alexssandro da Silva Oliveira - Acadêmico de Estatística</strong> </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <p><br></p>
@@ -245,7 +222,7 @@ f(y;\theta,\phi) = \exp\left\{ \phi \left[y\theta - b(\theta)  \right] + c(y, \p
 <p>Note que, ao considerarmos o parâmetro de precisão <span class="math inline">\phi = 1</span>, diz-se que a variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial uniparamétrica. Ou seja, <span class="math inline">Y \sim \text{FE}(\theta)</span>, se sua função densidade (ou de probabilidade) puder ser expressa por</p>
 <p><br></p>
 <p><span class="math display">
-f(y;\theta,\phi) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
+f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
 </span></p>
 </div>
 <p><br></p>
@@ -276,7 +253,8 @@ f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \
 <h3 data-number="1.4" class="anchored" data-anchor-id="função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</h3>
 <p><br></p>
 <div style="text-align: justify">
-<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por <br></p>
+<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por</p>
+<p><br></p>
 <p><span class="math display">
 \begin{aligned}
 \mathcal{\ell}(\boldsymbol{\theta},\phi)  
@@ -411,8 +389,38 @@ Y \sim \text{FE}(\theta)
 </span></p>
 <p><br></p>
 <p><strong><span class="math inline">\textcolor{blue}{\text{Passo VI: Distribuição da Amostra (Função de Verossmilhança)}}</span></strong></p>
+<p>Como discutido anteriormente, ao expressarmos a função de densidade de probabilidade na forma da família exponencial, torna-se possível construir a função de verossimilhança por meio do produtório das densidades associadas a cada observação. Essa formulação é viável graças à suposição de que as observações são independentes e identicamente distribuídas, logo:</p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\theta})
+&amp;= \prod_{i = 1}^{n} f(y_{i};\theta_{i}) \\
+&amp;= \prod_{i = 1}^{n} \exp\left\{ y_{i}\theta_{i} - b(\theta_{i})   + c(y_{i})\right\} \\
+&amp;= \exp\left\{ y_{1}\theta_{1} - b(\theta_{1}) + c(y_{1}) \right\} \times \cdots \times \exp\left\{y_{n}\theta_{n} - b(\theta_{n}) + c(y_{n}) \right\} \\
+&amp;= \exp\left\{\sum_{i=1}^{n} y_{i}\theta_{i} - \sum_{i=1}^{n} b(\theta_{i})   + \sum_{i=1}^{n} c(y_{i}) \right\}
+\end{aligned}
+</span></p>
+<p>Agora, basta substituirmos <span class="math inline">f(y_{i};\theta_{i})</span> na expressão acima pela função de probabilidade da distribuição de Poisson, logo:</p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\theta})
+&amp;= \prod_{i = 1}^{n} \left\{\frac{\mu_{i}^{y_i} e^{-\mu_{i}}} {y_{i}!}\right\} \\
+&amp;= \prod_{i = 1}^{n} exp\left\{y_{i} \log(\mu_{i}) -\mu_{i} - log(y_{i}!) \right\} \\
+&amp;= exp\left\{y_{1} \log(\mu_{1}) -\mu_{1} - log(y_{1}!) \right\} \times \cdots \times exp\left\{y_{n} \log(\mu_{n}) -\mu_{n} - log(y_{n}!) \right\} \\
+&amp;= \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!) \right\}
+\end{aligned}
+</span></p>
 <p><br></p>
 <p><strong><span class="math inline">\textcolor{blue}{\text{Passo VII: Função de Log-Verossmilhança}}</span></strong></p>
+<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por</p>
+<p><br></p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{\ell}(\boldsymbol{\theta})  
+&amp;= \log \left\{ \mathcal{L}(\boldsymbol{\theta}) \right\} \\
+&amp;= \log \left\{ \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!) \right\} \right\}\\
+&amp;= \sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!)
+\end{aligned}
+</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
