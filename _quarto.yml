@@ -10,7 +10,7 @@ website:
       - href: imd.qmd
         text: Introdução à Mineração de Dados (IMD)
       - href: int_bayes.qmd
-        text: Introdução à Inferência Baeyesiana
+        text: Introdução à Inferência Bayesiana
       - href: resumo.qmd
         text: Lista de Café da Manhã
       - href: about.qmd
