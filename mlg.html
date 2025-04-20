@@ -182,6 +182,20 @@ window.Quarto = {
 
 
 <p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Resolução de Exercícios</strong></p>
+</div>
+</div>
+<p><br></p>
 <section id="família-exponencial-canônica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
 <p><br></p>
@@ -279,7 +293,7 @@ f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div style="text-align: justify">
 <p><strong><span class="math inline">\textcolor{blue}{\text{Sobre o problema:}}</span></strong></p>
-<p>A variável aleatória <span class="math inline">Y</span> segue uma distribuição de Poisson com taxa de crescimento <span class="math inline">\mu</span>. Sua função de probabilidade (função massa de probabilidade) é dada por:</p>
+<p>A variável aleatória <span class="math inline">Y</span> segue uma distribuição de Poisson com taxa de crescimento <span class="math inline">\mu</span>. Sua função de probabilidade (função massa de probabilidade) é dada por</p>
 <p><br></p>
 <p><span class="math display">
 f(y;\mu) = \frac{\mu^{y} e^{-\mu}} {y!}  \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y) \quad \mu &gt; 0
@@ -299,7 +313,6 @@ f(y;\mu) = \frac{\mu^{y} e^{-\mu}} {y!}  \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y) \qua
 <p><span class="math display">
 f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
 </span> <br></p>
-<!-- Vamos usar a seguinte notação para representar a distribuição: $Y \sim \text{FE}(\theta)$ -->
 <p>A priori, é importante fazermos uso de algumas propriedades logarítmicas.</p>
 <p><br></p>
 <p><span class="math display"> f(y;\mu)\ = exp\left\{ \log\left[f(y;\mu)\right] \right\} </span></p>
@@ -451,9 +464,185 @@ P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}, \quad x = 0, 1, 2, \dots
 </span></p>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div style="text-align: justify">
+<p><strong><span class="math inline">\textcolor{blue}{\text{Sobre o problema:}}</span></strong></p>
+<p>A variável aleatória <span class="math inline">Y</span> tem distribuição Normal com média <span class="math inline">\mu</span> e variância <span class="math inline">\sigma^2</span>. Sua função densidade de probabilidade é dada por</p>
+<p><br></p>
 <p><span class="math display">
-f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+f(y;\mu,\sigma^2) = \dfrac{1}{\sqrt{2 \pi \sigma^2}} exp \left[ -\dfrac{(y - \mu)^2} {2\sigma^2}  \right] \mathbb{I}_{\{\mathbb{R}}\}(y), \quad \mu \in \mathbb{R}, \quad \sigma^2 &gt; 0
+</span> <br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo I: Importante, seja observador(a) 👀:}}</span></strong></p>
+<p><strong>Função Indicadora (suporte da variável aleatória):</strong> Note que o suporte da variável aleatória não depende de nenhum parâmetro.</p>
+<p><strong>Média:</strong> Veja se consegue identificar a média do modelo explicitamente na função densidade (ou probabilidade).</p>
+<p>Caso a média não esteja explícita na função densidade, pode ser necessário realizar algumas manipulações adicionais para expressá-la de forma que possamos parametrizar corretamente.</p>
+<p><strong>Parametrização:</strong> Como estamos lidando com o modelo de <strong>Normal</strong>, que possui dois parâmetros, adotaremos a parametrização biparamétrica</p>
+<p><br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo II: Parametrização da família exponencial canônica.}}</span></strong></p>
+<p>Dizemos que <span class="math inline">Y</span> pertence à família exponencial biparamétrica se for possível expressar sua função densidade na forma:</p>
+<p><br></p>
+<p><span class="math display">
+f(y;\theta,\phi) = \exp\left\{ \phi \left[y\theta - b(\theta)  \right] + c(y, \phi) \right\} \mathbb{I}_A(y)
+</span> <br></p>
+<p>Iremos reescrever a função densidade <span class="math inline">f(y;\theta,\phi)</span> para facilitar a sua manipulação</p>
+<p><span class="math display">
+\begin{aligned}
+f(y;\mu,\sigma^2)
+&amp;= \dfrac{1}{\sqrt{2 \pi \sigma^2}} exp \left( -\dfrac{(y - \mu)^2} {2\sigma^2}  \right) \mathbb{I}_{\{\mathbb{R}}\}(y) \\
+&amp;= (2 \pi \sigma^2)^{-\frac{1}{2}} exp\left( -\dfrac{(y - \mu)^2} {2\sigma^2}  \right) \mathbb{I}_{\{\mathbb{R}}\}(y) \\
+\end{aligned}
 </span></p>
+<p>A priori, é importante fazermos uso de algumas propriedades logarítmicas.</p>
+<p><br></p>
+$$
+<span class="math display">\begin{aligned}
+f(y;\mu, \sigma^2)\ &amp;= exp\left\{ \log\left[f(y;\mu,\sigma^2)\right] \right\} \\
+&amp;= exp\left\{ \log\left[ \dfrac{1}{\sqrt{2 \pi \sigma^2}} \left( -\dfrac{(y - \mu)^2} {2\sigma^2}  \right)\right] \right\}\mathbb{I}_{\{\mathbb{R}}\}(y)\\
+&amp;= exp\left\{ \log\left[ \dfrac{1}{\sqrt{2 \pi \sigma^2}} \left( -\dfrac{(y - \mu)^2} {2\sigma^2}  \right)\right] \right\}\mathbb{I}_{\{\mathbb{R}}\}(y)\\
+
+&amp;= \prod_{i = 1}^{n} f(y_{i};\theta_{i}) \\
+&amp;= \prod_{i = 1}^{n} \exp\left\{ y_{i}\theta_{i} - b(\theta_{i})   + c(y_{i})\right\} \\
+&amp;= \exp\left\{ y_{1}\theta_{1} - b(\theta_{1}) + c(y_{1}) \right\} \times \cdots \times \exp\left\{y_{n}\theta_{n} - b(\theta_{n}) + c(y_{n}) \right\} \\
+&amp;= \exp\left\{\sum_{i=1}^{n} y_{i}\theta_{i} - \sum_{i=1}^{n} b(\theta_{i})   + \sum_{i=1}^{n} c(y_{i}) \right\}
+\end{aligned}</span>
+<p>$$</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu, \sigma^2)\ = exp\left\{ \log\left[f(y;\mu,\sigma^2)\right] \right\} </span></p>
+<p><br></p>
+<p>Veja bem 👀, não alteramos a expressão ao aplicar a função exponencial ao logaritmo. Essa operação será útil e importante para a parametrização da função densidade (ou função de probabilidade). Aplicando <span class="math inline">exp\left\{ \log\left[f(y;\mu)\right] \right\}</span>, estamos utilizando a propriedade fundamental dos logaritmos e exponenciais, ou seja, <span class="math inline">exp(\log(x)) = x</span>, o que nos permite manipular a expressão sem alterar seu valor. Isso facilita a parametrização sem modificar a essência da função.</p>
+<p>Agora, basta substituirmos na expressão acima pela função de densidade de probabilidade do modelo normal.</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log\left[ \frac{\mu^{y} e^{-\mu}} {y!}  \right] \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span></p>
+<p><br></p>
+<p>Aplicando o logaritmo em cada termo da função e utilizando a propriedade <span class="math inline">\log\left(\dfrac{a}{b}\right) = \log(a) - \log(b)</span>, onde <span class="math inline">a = \mu^{y} e^{-\mu}</span> e <span class="math inline">b = y!</span> obtemos:</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log (\mu^{y}e^{-\mu}) - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span></p>
+<p><br></p>
+<p>Aplicando a propriedade logarítmica <span class="math inline">\log\left(a \cdot b\right) = \log(a) + \log(b)</span>, com <span class="math inline">a = \mu^{y}</span> e <span class="math inline">b = e^{-\mu}</span>, podemos reescrever <span class="math inline">\log(\mu^{y} e^{-\mu})</span> como sendo <span class="math inline">\log(\mu^{y}) + \log(e^{-\mu})</span>, portanto.</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu)\ = exp\left\{ \log(\mu^{y}) + \log(e^{-\mu}) - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo III: Momento de Reflexão 🤨, Veja Bem 👀}}</span></strong></p>
+<p><strong>Uma dúvida comum é: como saber se estou no caminho correto?</strong></p>
+<p>Lembre-se da estrutura da parametrização da família exponencial uniparamétrica. Estamos tentando reescrever <span class="math inline">f(y;\mu)</span> nessa forma específica. Ou seja, precisamos manipular a expressão de modo que os componentes característicos dessa família apareçam</p>
+<p><br> <span class="math display">
+f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)
+</span> <br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📝 Motivação ❤️💵✈️
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eu sei, parece bem confuso 😔… mas, assim como nas grandes histórias de amor, às vezes tudo começa com dúvidas e incertezas, até que, pouco a pouco, cada peça encontra seu lugar. A matemática e a estatística, como o amor, florescem quando temos paciência e acreditamos que tudo fará sentido no final. 💌✨ Basta dar o seu melhor.</p>
+<p>E se não fizer sentido, a gente faz algo não paramétrico mesmo, né? 😜 (Dorme que amanhã é outro dia)</p>
+</div>
+</div>
+<p><br></p>
+<p><br></p>
+<p><strong>Continuando o raciocínio</strong></p>
+<p>Estamos quase lá 🙂👍! Ao observarmos a expressão, podemos notar que ainda precisamos de um <span class="math inline">y</span> multiplicando um <span class="math inline">\theta</span>, não é mesmo? Lembre-se da dica sobre a média: a média da distribuição de Poisson é denotada por <span class="math inline">\mu</span>. Agora, se aplicarmos mais propriedades logarítmicas, podemos usar a regra <span class="math inline">\log(a^b) = b \log(a)</span>, ou seja, <span class="math inline">\log(\mu^y) = y \log(\mu)</span>. Além disso, podemos reescrever <span class="math inline">\log(e^{-\mu})</span> simplesmente como <span class="math inline">-\mu</span>, já que, como discutido anteriormente, <span class="math inline">\log(e^a) = a</span>.</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu)\ = exp\left\{y \log(\mu) -\mu - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <br></p>
+<p>Olha que mágico! ✨ Vamos comparar as duas expressões agora:</p>
+<p><br></p>
+<p><span class="math display"> f(y;\mu)\ = exp\left\{y \log(\mu) -\mu - log(y!) \right\} \mathbb{I}_{\{\mathbb{Z}^{+}\}}(y)</span> <span class="math display">f(y;\theta) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(y)</span></p>
+<p><br></p>
+<p>Que incrível 🤗!</p>
+<p><br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo IV: Identificar as componentes}}</span></strong></p>
+<p>Logo as componentes são:</p>
+<ul style="margin-left: 50px;">
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">\theta = \log(\mu)</span> é o <strong>parâmetro canônico</strong> da FE;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">\phi = 1</span> é o <strong>parâmetro de precisão</strong>;</p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">b(\theta) =  e^{\theta}</span></p>
+<p><span class="math display">\text{De modo que} \quad \theta = \log \mu \quad \Rightarrow \quad e^\theta = \mu</span></p>
+</li>
+<li style="margin-bottom: 10px;">
+<p><span class="math inline">c(y) = \log y!</span></p>
+</li>
+<li style="margin-bottom: 10px;">
+<span class="math inline">A(y) =  \mathbb{Z^{+}}</span> é o suporte da distribuição de <span class="math inline">Y</span>, que não depende dos parâmetros.
+</li>
+</ul>
+<p><br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo V: Propriedades da FE Canônica}}</span></strong></p>
+<p><strong>Condição (Suporte):</strong></p>
+<p><span class="math display">\text{Resultado:} \quad A(y)  \quad \text{não pode depende dos parâmetros}</span></p>
+<p><span class="math display">\text{Prova:} \quad A(y) =  \mathbb{Z^{+}}</span></p>
+<p><br></p>
+<p><strong>Condição de Primeira Ordem (Derivada Primeira de <span class="math inline">b(\theta)</span>):</strong></p>
+<p><span class="math display">\text{Resultado:} \quad b'(\theta) = \dfrac{\delta b(\theta)}{\delta \theta} = \mathbb{E}[X] = \mu</span></p>
+<p><span class="math display">\text{Prova:} \quad b'(\theta) = \dfrac{\delta b(\theta)}{\delta \theta} = \dfrac{\delta e^\theta}{\delta \theta} = e^\theta \quad \Rightarrow \quad e^\theta = \mu</span> <br></p>
+<p><strong>Condição de Segunda Ordem (Derivada Segunda de <span class="math inline">b(\theta)</span>):</strong></p>
+<p><span class="math display">\text{Resultado:} \quad b''(\theta) = \dfrac{\delta^2 b(\theta)}{\delta \theta} = \dfrac{\delta \mu}{\delta \theta} = V(\mu) = \mu</span></p>
+<p><span class="math display">\text{Prova:} \quad b''(\theta) = \dfrac{\delta^2 b(\theta)}{\delta \theta} = \dfrac{\delta \mu}{\delta \theta} = \dfrac{\delta e^\theta}{\delta \theta} = e^\theta  \quad \Rightarrow \quad e^\theta = \mu</span></p>
+<p>Onde <span class="math inline">V(\mu)</span> é chamada função de variância e <span class="math inline">\phi</span> recebe o nome de parâmetro de precisão porque quanto maior a variância de Y , menor será o seu valor.</p>
+<p><strong>Conclusão</strong></p>
+<p>A variável aleatória <span class="math inline">Y</span> segue uma distribuição de Poisson com taxa de crescimento <span class="math inline">\mu</span>, ou seja, <span class="math inline">Y \sim \text{Poisson}(\mu)</span>. Como demonstramos, é possível reescrever sua função de probabilidade na forma canônica da família exponencial uniparamétrica.</p>
+<p>Logo, <span class="math inline">Y</span> pertence à família exponencial com parâmetro canônico <span class="math inline">\theta = \log(\mu)</span>, isto é:<br>
+<span class="math display">
+Y \sim \text{FE}(\theta)
+</span></p>
+<p><br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo VI: Distribuição da Amostra (Função de Verossmilhança)}}</span></strong></p>
+<p>Como discutido anteriormente, ao expressarmos a função de densidade de probabilidade na forma da família exponencial, torna-se possível construir a função de verossimilhança por meio do produtório das densidades associadas a cada observação. Essa formulação é viável graças à suposição de que as observações são independentes e identicamente distribuídas, logo:</p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\theta})
+&amp;= \prod_{i = 1}^{n} f(y_{i};\theta_{i}) \\
+&amp;= \prod_{i = 1}^{n} \exp\left\{ y_{i}\theta_{i} - b(\theta_{i})   + c(y_{i})\right\} \\
+&amp;= \exp\left\{ y_{1}\theta_{1} - b(\theta_{1}) + c(y_{1}) \right\} \times \cdots \times \exp\left\{y_{n}\theta_{n} - b(\theta_{n}) + c(y_{n}) \right\} \\
+&amp;= \exp\left\{\sum_{i=1}^{n} y_{i}\theta_{i} - \sum_{i=1}^{n} b(\theta_{i})   + \sum_{i=1}^{n} c(y_{i}) \right\}
+\end{aligned}
+</span> <br></p>
+<p>Agora, basta substituirmos <span class="math inline">f(y_{i};\theta_{i})</span> na expressão acima pela função de probabilidade da distribuição de Poisson, logo:</p>
+<p><br></p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\theta})
+&amp;= \prod_{i = 1}^{n} \left\{\frac{\mu_{i}^{y_i} e^{-\mu_{i}}} {y_{i}!}\right\} \\
+&amp;= \prod_{i = 1}^{n} exp\left\{y_{i} \log(\mu_{i}) - e^{\mu_{i}} - log(y_{i}!) \right\} \\
+&amp;= exp\left\{y_{1} \log(\mu_{1}) - e^{\mu_{1}} - log(y_{1}!) \right\} \times \cdots \times exp\left\{y_{n} \log(\mu_{n}) - e^{\mu_{n}} - log(y_{n}!) \right\} \\
+&amp;= \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} e^{\mu_{i}}   + \sum_{i=1}^{n} log(y_{i}!) \right\}
+\end{aligned}
+</span></p>
+<p><br></p>
+<p><strong><span class="math inline">\textcolor{blue}{\text{Passo VII: Função de Log-Verossmilhança}}</span></strong></p>
+<p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por</p>
+<p><br></p>
+<p><span class="math display">
+\begin{aligned}
+\mathcal{\ell}(\boldsymbol{\theta})  
+&amp;= \log \left\{ \mathcal{L}(\boldsymbol{\theta}) \right\} \\
+&amp;= \log \left\{ \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!) \right\} \right\}\\
+&amp;= \sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!)
+\end{aligned}
+</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note que até o momento fizemos tudo com bastante calma, explicando cada detalhe com carinho e atenção. 💙<br>
+Mas agora, para não alongarmos demais, vamos acelerar um pouquinho nas contas, tá bom? Prometo que, mesmo assim, vamos continuar com cuidado e sem deixar você perdido. 🙂😊✌️<br>
+Se algo parecer confuso, respira fundo — você pode voltar e rever com calma quando quiser. Estamos juntos nessa jornada! ✨</strong></p>
+</div>
+</div>
+<p><br></p>
+</div>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <p><span class="math display">
