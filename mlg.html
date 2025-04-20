@@ -40,8 +40,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5209b159a82691e9d5149d41019c8267.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cdfc18aeba80b280c080b85a4e594d0e.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ebcf65b7b10da4ce1bbd6dc5549134cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f44085abd1324153d9607b31355a3e89.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,7 +116,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,10 +157,27 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sumário</h2>
+   
+  <ul>
+  <li><a href="#família-exponencial-canônica" id="toc-família-exponencial-canônica" class="nav-link active" data-scroll-target="#família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</a>
+  <ul class="collapse">
+  <li><a href="#família-exponencial-biparamétrica" id="toc-família-exponencial-biparamétrica" class="nav-link" data-scroll-target="#família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</a></li>
+  <li><a href="#família-exponencial-uniparamétrica" id="toc-família-exponencial-uniparamétrica" class="nav-link" data-scroll-target="#família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</a></li>
+  <li><a href="#distribuição-da-amostra-função-de-verossmilhança" id="toc-distribuição-da-amostra-função-de-verossmilhança" class="nav-link" data-scroll-target="#distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</a></li>
+  <li><a href="#função-de-log-verossmilhança" id="toc-função-de-log-verossmilhança" class="nav-link" data-scroll-target="#função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">2</span> Exercícios</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -189,10 +206,10 @@ window.Quarto = {
 
 <p><br></p>
 <section id="família-exponencial-canônica" class="level2" data-number="1">
-<h2 data-number="1" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
+<h2 data-number="1" class="anchored" data-anchor-id="família-exponencial-canônica"><span class="header-section-number">1</span> Família Exponencial Canônica</h2>
 <p><br></p>
 <section id="família-exponencial-biparamétrica" class="level3" data-number="1.1">
-<h3 data-number="1.1" data-anchor-id="família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</h3>
+<h3 data-number="1.1" class="anchored" data-anchor-id="família-exponencial-biparamétrica"><span class="header-section-number">1.1</span> Família Exponencial Biparamétrica</h3>
 <p><br></p>
 <div style="text-align: justify">
 <p>Dizemos que uma variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial biparamétrica na forma canônica, <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, se sua função densidade (ou de probabilidade) pode ser expressa por</p>
@@ -222,7 +239,7 @@ f(y;\theta,\phi) = \exp\left\{ \phi \left[y\theta - b(\theta)  \right] + c(y, \p
 </div>
 </section>
 <section id="família-exponencial-uniparamétrica" class="level3" data-number="1.2">
-<h3 data-number="1.2" data-anchor-id="família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</h3>
+<h3 data-number="1.2" class="anchored" data-anchor-id="família-exponencial-uniparamétrica"><span class="header-section-number">1.2</span> Família Exponencial Uniparamétrica</h3>
 <p><br></p>
 <div style="text-align: justify">
 <p>Note que, ao considerarmos o parâmetro de precisão <span class="math inline">\phi = 1</span>, diz-se que a variável aleatória <span class="math inline">Y</span> (discreta ou contínua) pertence à família exponencial uniparamétrica. Ou seja, <span class="math inline">Y \sim \text{FE}(\theta)</span>, se sua função densidade (ou de probabilidade) puder ser expressa por</p>
@@ -234,7 +251,7 @@ f(y;\theta,\phi) = \exp\left\{ y\theta - b(\theta) + c(y) \right\} \mathbb{I}_A(
 <p><br></p>
 </section>
 <section id="distribuição-da-amostra-função-de-verossmilhança" class="level3" data-number="1.3">
-<h3 data-number="1.3" data-anchor-id="distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</h3>
+<h3 data-number="1.3" class="anchored" data-anchor-id="distribuição-da-amostra-função-de-verossmilhança"><span class="header-section-number">1.3</span> Distribuição da Amostra (Função de Verossmilhança)</h3>
 <p><br></p>
 <div style="text-align: justify">
 <p>Seja <span class="math inline">\bm{Y} = (Y_{1},Y_{2},\cdots , Y_{n})</span> uma amostra aleatória de variáveis aleatórias independentes provenientes de uma população <span class="math inline">Y \sim \text{FE}(\theta, \phi)</span>, tal que a função densidade (ou de probabilidade) de cada <span class="math inline">\bm{Y_{i}}</span>, com <span class="math inline">i = 1 ,\cdots , n</span> é dada por</p>
@@ -256,7 +273,7 @@ f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \
 </div>
 </section>
 <section id="função-de-log-verossmilhança" class="level3" data-number="1.4">
-<h3 data-number="1.4" data-anchor-id="função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</h3>
+<h3 data-number="1.4" class="anchored" data-anchor-id="função-de-log-verossmilhança"><span class="header-section-number">1.4</span> Função de Log-Verossmilhança</h3>
 <p><br></p>
 <div style="text-align: justify">
 <p>A função de log-verossimilhança com representação da <strong>FE</strong> é dada por <br></p>
@@ -273,12 +290,12 @@ f(y_{i};\theta_{i},\phi) = \exp\left\{ \phi \left[y\theta_{i} - b(\theta_{i})  \
 </section>
 </section>
 <section id="exercícios" class="level2" data-number="2">
-<h2 data-number="2" data-anchor-id="exercícios"><span class="header-section-number">2</span> Exercícios</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">2</span> Exercícios</h2>
 <p><br></p>
 <div style="text-align: justify">
 <p>Para cada distribuição da variável aleatória <span class="math inline">Y</span> a seguir, mostraremos que ela pertence à família exponencial canônica, identificaremos os componentes e obteremos a esperança <span class="math inline">\mu</span>, a função de variância <span class="math inline">V(\mu)</span> e a variância de <span class="math inline">Y</span>.</p>
 <p><br></p>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">b) Binomial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">c) Binomial Negativa</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">d) Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">e) Gamma</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">f) Normal Inversa</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">Dirichlet</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
@@ -451,7 +468,7 @@ f(x_1, \ldots, x_k \;|\; \alpha_1, \ldots, \alpha_k) = \frac{\Gamma\left(\sum_{i
 </div>
 </section>
 
-
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
