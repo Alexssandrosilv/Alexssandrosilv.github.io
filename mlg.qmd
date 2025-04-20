@@ -380,18 +380,20 @@ $$
 &= \exp\left\{\sum_{i=1}^{n} y_{i}\theta_{i} - \sum_{i=1}^{n} b(\theta_{i})   + \sum_{i=1}^{n} c(y_{i}) \right\}
 \end{aligned}
 $$
+<br>
 
 Agora, basta substituirmos $f(y_{i};\theta_{i})$ na expressão acima pela função de probabilidade da distribuição de Poisson, logo:
 
 
+<br>
 
 $$
 \begin{aligned}
 \mathcal{L}(\boldsymbol{\theta}) 
 &= \prod_{i = 1}^{n} \left\{\frac{\mu_{i}^{y_i} e^{-\mu_{i}}} {y_{i}!}\right\} \\
-&= \prod_{i = 1}^{n} exp\left\{y_{i} \log(\mu_{i}) -\mu_{i} - log(y_{i}!) \right\} \\
-&= exp\left\{y_{1} \log(\mu_{1}) -\mu_{1} - log(y_{1}!) \right\} \times \cdots \times exp\left\{y_{n} \log(\mu_{n}) -\mu_{n} - log(y_{n}!) \right\} \\
-&= \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} \mu_{i}   + \sum_{i=1}^{n} log(y_{i}!) \right\}
+&= \prod_{i = 1}^{n} exp\left\{y_{i} \log(\mu_{i}) - e^{\mu_{i}} - log(y_{i}!) \right\} \\
+&= exp\left\{y_{1} \log(\mu_{1}) - e^{\mu_{1}} - log(y_{1}!) \right\} \times \cdots \times exp\left\{y_{n} \log(\mu_{n}) - e^{\mu_{n}} - log(y_{n}!) \right\} \\
+&= \exp\left\{\sum_{i=1}^{n} y_{i} \log(\mu_{i}) - \sum_{i=1}^{n} e^{\mu_{i}}   + \sum_{i=1}^{n} log(y_{i}!) \right\}
 \end{aligned}
 $$
 
