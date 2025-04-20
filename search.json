@@ -7,6 +7,13 @@
     "text": "1 Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
   },
   {
+    "objectID": "int_bayes.html#prática",
+    "href": "int_bayes.html#prática",
+    "title": "INTRODUÇÃO À MINERAÇÃO DE DADOS - IMD",
+    "section": "1 Prática",
+    "text": "1 Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
+  },
+  {
     "objectID": "mlg.html#família-exponencial-canônica",
     "href": "mlg.html#família-exponencial-canônica",
     "title": "MODELOS LINEARES GENERALIZADOS - MLG",
