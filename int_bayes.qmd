@@ -1,5 +1,5 @@
 ---
-# title: ""                                                                # --> Título principal do documento
+title: ""                                                                # --> Título principal do documento
 # subtitle: "Notações de Aula"                                           # --> Subtítulo (complementa o título)
 # author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**"   # --> Nome do autor (com negrito usando Quarto)
 # date: ""                                                               # --> Data (em branco para não exibir nada)
