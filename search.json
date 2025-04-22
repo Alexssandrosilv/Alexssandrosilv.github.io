@@ -14,11 +14,11 @@
     "text": "1 Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
   },
   {
-    "objectID": "int_bayes.html#prática",
-    "href": "int_bayes.html#prática",
+    "objectID": "int_bayes.html#exercícios-propostos",
+    "href": "int_bayes.html#exercícios-propostos",
     "title": "",
-    "section": "1 Prática",
-    "text": "1 Prática\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
+    "section": "1 Exercícios Propostos",
+    "text": "1 Exercícios Propostos\n\n\n1.1 Eficácia de um Novo Medicamento\n\n\nUma empresa farmacêutica desenvolveu um novo medicamento para tratar enxaquecas. Antes do lançamento, eles afirmam que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente com 250 pacientes revelou que 180 deles relataram alívio da dor. Os resultados do estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?\n\n\nExemplo de código em RExemplo de código em Python\n\n\nfizz_buzz &lt;- function(fbnums = 1:50) {\n  output &lt;- dplyr::case_when(\n    fbnums %% 15 == 0 ~ \"FizzBuzz\",\n    fbnums %% 3 == 0 ~ \"Fizz\",\n    fbnums %% 5 == 0 ~ \"Buzz\",\n    TRUE ~ as.character(fbnums)\n  )\n  print(output)\n}\n\n\ndef fizz_buzz(num):\n  if num % 15 == 0:\n  print(\"FizzBuzz\")\nelif num % 5 == 0:\n  print(\"Buzz\")\nelif num % 3 == 0:\n  print(\"Fizz\")\nelse:\n  print(num)"
   },
   {
     "objectID": "about.html",
