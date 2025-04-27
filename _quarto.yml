@@ -2,9 +2,15 @@ project:
   type: website
 
 website:
-  title: ""
+  title: "Alexssandro Silva"
+  page-navigation: true
+  #image: opengraph.png
   description: Descrição do site
   navbar:
+    search: TRUE
+    background: "red"
+    foreground: "blue"
+    collapse: FALSE
     left:
       - href: mlg.qmd
         text: Modelos Lineares Generalizados (MLG)
@@ -16,6 +22,21 @@ website:
         text: Lista de Café da Manhã
       - href: about.qmd
         text: Sobre 
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub
+  sidebar:   # Barra lateral
+    search: true
+  
+  page-footer:
+    center: 
+      - text: "About"
+        href: about.qmd
+      - text: "License"
+        href: license.md
+      - text: "Trademark"
+        href: trademark.qmd
 
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
