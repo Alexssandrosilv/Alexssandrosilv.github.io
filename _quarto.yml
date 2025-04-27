@@ -3,6 +3,7 @@ project:
 
 website:
   title: ""
+  description: Descrição do site
   navbar:
     left:
       - href: mlg.qmd

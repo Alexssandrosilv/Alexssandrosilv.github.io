@@ -12,20 +12,6 @@ editor: visual                                                           # -----
 
 ## Exercícios Propostos
 
-<br>
-
-### Eficácia de um Novo Medicamento
-
-<br>
-
-::: {style="text-align: justify"}
-Uma empresa farmacêutica desenvolveu um novo medicamento para tratar enxaquecas. Antes do lançamento, eles afirmam que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente com 250 pacientes revelou que 180 deles relataram alívio da dor. Os resultados do estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?
-:::
-
-
-
-
-
 ```{r setup, include=FALSE}
 # Define opções padrão para todos os chunks de código no R Markdown
 knitr::opts_chunk$set(
@@ -36,6 +22,20 @@ knitr::opts_chunk$set(
   fig.height = 6       # Define a altura padrão das figuras (em polegadas)
 )
 ```
+
+<br>
+
+### Eficácia de um Novo Medicamento
+
+<br>
+
+::: {style="text-align: justify"}
+Uma empresa farmacêutica desenvolveu um novo medicamento para tratar enxaquecas. Antes do lançamento, eles afirmam que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente com 250 pacientes revelou que 180 deles relataram alívio da dor. Os resultados do estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?
+
+**Solução**
+:::
+
+
 
 ::: panel-tabset
 ## Exemplo de código em R
