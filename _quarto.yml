@@ -8,8 +8,8 @@ website:
   description: Descrição do site
   navbar:
     search: TRUE
-    background: "red"
-    foreground: "blue"
+    #background: "red"
+    #foreground: "blue"
     collapse: FALSE
     left:
       - href: mlg.qmd
