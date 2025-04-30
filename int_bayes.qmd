@@ -4,10 +4,11 @@
 #author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**" # --> Nome do autor (com negrito usando Quarto)
 # date: ""                                                               # --> Data (em branco para não exibir nada)
 # date-format: short                                                     # --> Formato da data: curto (ex: 16/04/2025)
-
 lang: pt
 editor: visual                                                         # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
 ---
+
+<br>
 
 
 
