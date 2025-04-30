@@ -1,70 +1,963 @@
 ---
-title: ""                                                                # --> Título principal do documento
+#title: "MODELOS LINEARES GENERALIZADOS - MLG"                          # --> Título principal do documento
 # subtitle: "Notações de Aula"                                           # --> Subtítulo (complementa o título)
-# author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**"   # --> Nome do autor (com negrito usando Quarto)
+#author: "**Alexssandro da Silva Oliveira - Acadêmico de Estatística**" # --> Nome do autor (com negrito usando Quarto)
 # date: ""                                                               # --> Data (em branco para não exibir nada)
 # date-format: short                                                     # --> Formato da data: curto (ex: 16/04/2025)
 lang: pt
-editor: visual                                                           # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
+editor: visual                                                         # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
 ---
-
-<br>
-
-## Exercícios Propostos
 
 ```{r setup, include=FALSE}
 # Define opções padrão para todos os chunks de código no R Markdown
 knitr::opts_chunk$set(
-  echo = FALSE,         # Oculta o código nos resultados finais do documento
+  echo = TRUE,         # Oculta o código nos resultados finais do documento
   warning = FALSE,     # Suprime mensagens de aviso (warnings)
   message = FALSE,     # Suprime mensagens informativas (como as de carregamento de pacotes)
   fig.width = 10,      # Define a largura padrão das figuras (em polegadas)
   fig.height = 6       # Define a altura padrão das figuras (em polegadas)
 )
+
 ```
+
+## Exercícios
+
+::: {style="text-align: justify"}
+Propõe-se a solução dos exercícios do Capítulo 5: Modelo de Bernoulli. Posteriormente, serão expostas e discutidas as conclusões acerca dos resultados obtidos. Para a elaboração deste estudo, empregaremos a linguagem de programação [**R**](http://www.R-project.org/), voltada para a manipulação, análise e visualização de dados, bem como o software livre de ambiente de desenvolvimento integrado [**RStudio**](https://posit.co/download/rstudio-desktop/).
+:::
+
+```{r}
+## Parte 1: Bibliotecas
+
+#| Este script configura o ambiente com as bibliotecas "pacotes" utilizados neste trabalho
+
+#| 1.  Bibliotecas ausentes são instalados automaticamente.
+#| 2.  Todos as bibliotecas são carregadas de forma eficiente.
+#| 3.  Cada biblioteca é comentada para facilitar a consulta sobre seu uso e aplicabilidade.
+
+# Lista de pacotes necessários, organizados por funcionalidade
+
+# ---- 
+pacotes <- c(
+  # Manipulação e organização de dados
+  "dplyr",          # Ferramentas para manipulação de dados
+  "magrittr",       # Operador pipe (%>%) para encadeamento de funções
+
+  # Visualização de dados
+  "ggplot2",        # Criação de gráficos estatísticos customizáveis
+  "corrplot",       # Visualização de matrizes de correlação
+  
+  # Criação e personalização de tabelas
+  "reactable",      # Construção de tabelas interativas
+  "flextable",      # Criação e personalização de tabelas para relatórios
+  "extraDistr"      # Dirichlet Distribuição
+)
+
+# Verifica e instala pacotes ausentes
+pacotes_nao_instalados <- pacotes[!pacotes %in% installed.packages()]
+if (length(pacotes_nao_instalados) > 0) {
+  install.packages(pacotes_nao_instalados, dependencies = TRUE)
+}
+
+# Carrega todos os pacotes
+invisible(sapply(pacotes, require, character.only = TRUE))
+```
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
 
 <br>
 
 ### Eficácia de um Novo Medicamento
 
+::: {style="text-align: justify"}
+Uma empresa farmacêutica desenvolveu um novo medicamento para o tratamento de enxaquecas. Antes do lançamento, ela afirma que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente, com 250 participantes, revelou que 180 deles relataram alívio da dor. Os resultados desse estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\alpha$ a **eficácia do medicamento.**
+-   **Tamanho da amostra** $n$ = 250 (Número total de participantes).
+-   **Sucessos observados** $\sum_{i=1}^{n} x_i$ = 180 (Pacientes que relataram alívio da dor).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(\alpha)$:
+
+$$
+\begin{aligned}
+\mathcal{L}(\alpha) 
+& \propto \alpha^{\sum_{i = 1}^{n} x_i} (1 - \alpha)^{n - \sum_{i = 1}^{n} x_i} \\
+& \propto \alpha^{180} (1 - \alpha)^{250 - 180} \\
+& \propto \alpha^{180} (1 - \alpha)^{70}
+\end{aligned}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Beta para $\alpha$, onde $\alpha \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 2$ e $b = 2$:
+
+$$
+\begin{aligned}
+f(\alpha) 
+& \propto \alpha^{a}(1 - \alpha)^{b} \\
+& \propto \alpha^{2}(1 - \alpha)^{2}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $\alpha | \mathbf{x}$ é:
+
+$$
+\begin{aligned}
+f(\alpha | \mathbf{\mathcal{x_{i}, \ldots,x_{n}}})
+& \propto \mathcal{L}(\alpha) \cdot f(\alpha) \\
+& \propto \alpha^{180}(1 - \alpha)^{70} \cdot \alpha^{2}(1 - \alpha)^{2} \\
+& \propto \alpha^{182}(1 - \alpha)^{72}
+\end{aligned}
+$$
+
+Portanto:
+
+$$
+\begin{aligned}
+\alpha | \mathbf{x} 
+& \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b) \\
+& \sim \text{Beta}(182, 72)
+\end{aligned}
+$$ Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+n <- 250
+alpha <- 180
+alpha.c <- n - alpha
+
+# Priori: Hiperparâmetros Beta(2,2)
+a <- 2
+b <- 2
+
+# Parâmetros da posteriori
+post.a <- alpha + a
+post.b <- alpha.c + b
+
+# Calcular probabilidade da hipótese H0: α > 0.8
+prob <- round(1 - pbeta(0.8, post.a, post.b), 3)
+
+# Gráfico da posteriori Beta(182,72)
+curve(
+  dbeta(x, post.a, post.b), 0.55, 0.85, lwd = 2, col = "#00008B",
+  ylab = expression(alpha ~ "|" ~ bold(x) ~ " " ~ "~ Beta(182, 72)"),
+  xlab = "Probabilidade de Eficácia do Medicamento",
+  main = expression("Distribuição a Posteriori para " ~ alpha ~ "|" ~ bold(x) ~ "(Eficácia do Medicamento)"),
+  ylim = c(0, 15),
+  cex.lab = 1.1,
+  cex.axis = 1.2,
+  cex.main = 1.4
+)
+
+# Quantis
+b1 <- qbeta(0.025, post.a, post.b)
+b2 <- qbeta(0.975, post.a, post.b)
+
+# Linhas verticais para os quantis
+lines(x = c(b1, b1), y = c(0, dbeta(b1, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(b2, b2), y = c(0, dbeta(b2, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+
+# Linha vertical apenas para p = 0.8 (hipótese)
+abline(v = 0.8, col = "#FF1493", lwd = 2, lty = 1)
+
+# Legenda (incluindo os quantis)
+legend("topleft", 
+       legend = c(
+         "Posteriori", 
+         bquote(P(alpha >= 0.80 ~ "|" ~ bold(x)) == .(prob)),
+         bquote(Q[0.025] == .(round(b1, 4))),
+         bquote(Q[0.975] == .(round(b2, 4)))
+       ),
+       col = c("#00008B", "#FF1493", "#00CD00", "#00CD00"), 
+       lwd = 2, lty = c(1, 1, 1, 1), bty = "n", cex = 1.2)
+
+```
+
+**Conclusão:** Ao analisar a distribuição a posteriori $\alpha | \mathbf{x}$, observa-se que a probabilidade da hipótese $P(\alpha \geq 0{,}80 \mid \mathbf{x}) = 0.001$ está concentrada na cauda da distribuição. Isso indica que não há evidências suficientes para sustentar a alegação da empresa de que o medicamento alivia a dor em pelo menos 80% dos casos, conclusão essa que é corroborada visualmente pelo gráfico da densidade a posteriori.
+:::
+
 <br>
 
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### Preferência por uma Marca de Café
+
 ::: {style="text-align: justify"}
-Uma empresa farmacêutica desenvolveu um novo medicamento para tratar enxaquecas. Antes do lançamento, eles afirmam que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente com 250 pacientes revelou que 180 deles relataram alívio da dor. Os resultados do estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?
+Uma pesquisa de mercado afirma que 55% dos consumidores preferem a marca A de café à marca B. Uma amostra aleatória de 300 consumidores revelou que 180 deles preferem a marca A. Os resultados da amostra fornecem evidências suficientes para rejeitar a alegação da pesquisa de mercado?
 
-**Solução**
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $p$ a **preferência dos consumidores pela marca de café A.**
+-   **Tamanho da amostra** $n = 300$ (Número total de consumidores).
+-   **Sucessos observados** $\sum_{i=1}^{n} x_i = 180$ (Consumidores que preferem a marca A).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(p)$:
+
+$$
+\begin{aligned}
+\mathcal{L}(p) 
+& \propto p^{\sum_{i = 1}^{n} x_i} (1 - p)^{n - \sum_{i = 1}^{n} x_i} \\
+& \propto p^{180} (1 - p)^{300 - 180} \\
+& \propto p^{180} (1 - p)^{120}
+\end{aligned}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Beta para $p$, onde $p \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 0$ e $b = 1$:
+
+$$
+\begin{aligned}
+f(p) 
+& \propto p^{a}(1 - p)^{b} \\
+& \propto p^{0}(1 - p)^{1}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $p | \mathbf{x}$ é:
+
+$$
+\begin{aligned}
+f(p\mid\mathbf{\mathcal{x_{i}, \ldots,x_{n}}})
+& \propto \mathcal{L}(p) \cdot f(p) \\
+& \propto p^{180}(1 - p)^{120} \cdot p^{0}(1 - p)^{1} \\
+& \propto p^{180}(1 - p)^{121}
+\end{aligned}
+$$
+
+Portanto:
+
+$$
+\begin{aligned}
+p | \mathbf{x} 
+& \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b) \\
+& \sim \text{Beta}(180, 121)
+\end{aligned}
+$$
+
+Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+n       <- 250      # Tamanho da amostra
+p       <- 180      # Número de sucessos
+p.c     <- n - p    # Número de fracassos
+
+# Priori: Hiperparâmetros Beta(0,1) proporcional uniforme (0,1)
+a <- 0                      
+b <- 1                      
+
+# Parâmetros da posteriori
+post.a <- p + a
+post.b <- p.c + b
+
+# Calcular probabilidade da hipótese H0: p >= 0.55
+prob <- round(1 - pbeta(0.55, post.a, post.b), 3)
+
+# Gráfico da posteriori Beta(180,121)
+curve(
+  dbeta(x, post.a, post.b), 0.3, 0.9, lwd = 2, col = "#FF4040",
+  ylab = expression(p ~ "|" ~ bold(x) ~ " " ~ "~ Beta(180, 121)"),
+  xlab = "Probabilidade de Preferência pela marca de café A",
+  main = expression("Distribuição a Posteriori para " ~ p ~ "|" ~ bold(x) ~ "( Preferência pela marca de café A)"),
+  ylim = c(0, 15),
+  cex.lab = 1.1,
+  cex.axis = 1.2,
+  cex.main = 1.4
+)
+
+# Quantis
+b1 <- qbeta(0.025, post.a, post.b)
+b2 <- qbeta(0.975, post.a, post.b)
+
+# Linhas verticais para os quantis (somente lines)
+lines(x = c(b1, b1), y = c(0, dbeta(b1, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(b2, b2), y = c(0, dbeta(b2, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+
+# Linha vertical apenas para p = 0.55 (hipótese)
+abline(v = 0.55, col = "#BF3EFF", lwd = 2, lty = 1)
+
+# Legenda (incluindo os quantis)
+legend("topleft", 
+       legend = c(
+         "Posteriori", 
+         bquote(P(p >= 0.55 ~ "|" ~ bold(x)) == .(prob)),
+         bquote(Q[0.025] == .(round(b1, 4))),
+         bquote(Q[0.975] == .(round(b2, 4)))
+       ),
+       col = c("#FF4040", "#BF3EFF", "#00CD00", "#00CD00"), 
+       lwd = 2, lty = c(1, 1, 1, 1), bty = "n", cex = 1.2)
+
+```
+
+**Conclusão** Ao analisar a distribuição a posteriori $p | \mathbf{x}$, observa-se que a probabilidade da hipótese $P(p \geq 0.55 \mid \mathbf{x}) = 1$. Isso indica que, ao considerarmos a hipótese de que a proporção de consumidores que preferem a marca A é **superior** a 55%, há forte evidência em seu favor. No entanto, se a hipótese fosse de que exatamente 55% dos consumidores preferem a marca A, a probabilidade correspondente seria baixa por estar na cauda da distribuição. Assim, os dados não fornecem suporte à alegação da pesquisa de mercado, segundo a qual 55% (exato) dos consumidores preferem a marca A de café em relação à marca B.
 :::
 
+<br>
 
+::: {style="border-top: 2px solid #003366;"}
+:::
 
-::: panel-tabset
-## Exemplo de código em R
+<br>
 
-``` r
-fizz_buzz <- function(fbnums = 1:50) {
-  output <- dplyr::case_when(
-    fbnums %% 15 == 0 ~ "FizzBuzz",
-    fbnums %% 3 == 0 ~ "Fizz",
-    fbnums %% 5 == 0 ~ "Buzz",
-    TRUE ~ as.character(fbnums)
-  )
-  print(output)
+### Taxa de Aprovação em um Exame
+
+::: {style="text-align: justify"}
+Uma escola afirma que a taxa de aprovação em um exame padronizado é de 70%. Uma amostra de 200 alunos revelou que 120 deles foram aprovados. Os resultados da amostra fornecem evidências suficientes para rejeitar a alegação da escola?
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\lambda$ a **taxa de aprovação dos alunos no exame.**
+-   **Tamanho da amostra** $n = 200$ (Número total de alunos).
+-   **Sucessos observados** $\sum_{i=1}^{n} x_i = 120$ (Alunos Aprovados).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(\lambda)$:
+
+$$
+\begin{aligned}
+\mathcal{L}(\lambda) 
+& \propto \lambda^{\sum_{i = 1}^{n} x_i} (1 - \lambda)^{n - \sum_{i = 1}^{n} x_i} \\
+& \propto \lambda^{120} (1 - \lambda)^{200 - 120} \\
+& \propto \lambda^{120} (1 - \lambda)^{80}
+\end{aligned}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Beta para $\lambda$, onde $\lambda \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 0$ e $b = 1$:
+
+$$
+\begin{aligned}
+f(\lambda) 
+& \propto \lambda^{a}(1 - \lambda)^{b} \\
+& \propto \lambda^{0}(1 - \lambda)^{1}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $\lambda | \mathbf{x}$ é:
+
+$$
+\begin{aligned}
+f(\lambda\mid\mathbf{\mathcal{x_{i}, \ldots,x_{n}}})
+& \propto \mathcal{L}(\lambda) \cdot f(\lambda) \\
+& \propto \lambda^{120}(1 - \lambda)^{80} \cdot \lambda^{0}(1 - \lambda)^{1} \\
+& \propto \lambda^{120}(1 - \lambda)^{81}
+\end{aligned}
+$$
+
+Portanto:
+
+$$
+\begin{aligned}
+\lambda | \mathbf{x} 
+& \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b) \\
+& \sim \text{Beta}(120, 81)
+\end{aligned}
+$$ Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+# Dados
+n        <- 200         # Tamanho da amostra
+lambda   <- 120         # lambda = Número de sucessos
+lambda.c <- n - lambda  # lambda complementar = Número de fracassos
+
+# Priori: Beta(0,1) proporcional a uma uniforme (0,1)
+a <- 0  # hiperparâmetro
+b <- 1  # hiperparâmetro
+
+# Parâmetros da posteriori
+post.a <- lambda + a
+post.b <- lambda.c + b
+
+# Calcular probabilidade da hipótese H0: lambda >= 0.70
+prob <- round(1 - pbeta(0.70, post.a, post.b), 3)
+
+# Gráfico da posteriori Beta(120, 81)
+curve(
+  dbeta(x, post.a, post.b), 0.3, 0.9, lwd = 2, col = "#00FFFF",
+  ylab = expression(lambda ~ "|" ~ bold(x) ~ " " ~ "~ Beta(120, 81)"),
+  xlab = "Probabilidade de aprovação dos alunos no exame",
+  main = expression("Distribuição a Posteriori para " ~ lambda ~ "|" ~ bold(x) ~ "(Aprovação dos alunos no exame)"),
+  ylim = c(0, 15),
+  cex.lab = 1.1,   # Tamanho da legenda dos eixos
+  cex.axis = 1.2,  # Tamanho dos valores nos eixos
+  cex.main = 1.4   # Tamanho do título
+)
+
+# Quantis
+b1 <- qbeta(0.025, post.a, post.b)
+b2 <- qbeta(0.975, post.a, post.b)
+
+# Linhas verticais para os quantis
+lines(x = c(b1, b1), y = c(0, dbeta(b1, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(b2, b2), y = c(0, dbeta(b2, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+
+# Linha vertical apenas para p = 0.70 (hipótese)
+abline(v = 0.70, col = "darkblue", lwd = 2, lty = 1)
+
+# Legenda (incluindo os quantis)
+legend("topright", 
+       legend = c(
+         "Posteriori", 
+         bquote(P(lambda >= 0.70 ~ "|" ~ bold(x)) == .(prob)),
+         bquote(Q[0.025] == .(round(b1, 4))),
+         bquote(Q[0.975] == .(round(b2, 4)))
+       ),
+       col = c("#00FFFF", "darkblue", "#00CD00", "#00CD00"), 
+       lwd = 2, lty = c(1, 1, 1, 1), bty = "n", cex = 1.2)
+
+```
+
+**Conclusão:** Ao analisar a distribuição a posteriori $\lambda | \mathbf{x}$, observa-se que a probabilidade da hipótese $P(\lambda \geq 0.70 \mid \mathbf{x}) = 0.001$, o que é corroborado visualmente. Dessa forma, não há evidências para sustentar a alegação da escola de que a taxa de aprovação dos alunos em um exame padronizado é de 70%.
+:::
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### Eficácia de uma Campanha de Vacinação
+
+::: {style="text-align: justify"}
+Uma campanha de vacinação contra a gripe foi realizada em uma cidade. Antes da campanha, a taxa de vacinação era de 35%. Após a campanha, uma amostra de 400 pessoas revelou que 180 delas foram vacinadas. Os resultados da amostra fornecem evidências suficientes para concluir que a campanha aumentou a taxa de vacinação?
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\lambda$ a **nova taxa de vacinação.**
+-   **Tamanho da amostra** $n = 400$ (Número total de pessoas).
+-   **Sucessos observados** $\sum_{i=1}^{n} x_i = 180$ (Pessoas vacinadas).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(\lambda)$:
+
+$$
+\begin{aligned}
+\mathcal{L}(\lambda) 
+& \propto \lambda^{\sum_{i = 1}^{n} x_i} (1 - \lambda)^{n - \sum_{i = 1}^{n} x_i} \\
+& \propto \lambda^{180} (1 - \lambda)^{400 - 180} \\
+& \propto \lambda^{180} (1 - \lambda)^{220}
+\end{aligned}
+$$ -- **Distribuição a priori**: Considerando uma priori Beta para $\lambda$, onde $\lambda \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 3$ e $b = 3$:
+
+$$
+\begin{aligned}
+f(\lambda) 
+& \propto \lambda^{a}(1 - \lambda)^{b} \\
+& \propto \lambda^{3}(1 - \lambda)^{3}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $\lambda | \mathbf{x}$ é:
+
+$$
+\begin{aligned}
+f(\lambda \mid \mathbf{\mathcal{x_{i}, \ldots,x_{n}}})
+& \propto \mathcal{L}(\lambda) \cdot f(\lambda) \\
+& \propto \lambda^{180}(1 - \lambda)^{220} \cdot \lambda^{3}(1 - \lambda)^{3} \\
+& \propto \lambda^{183}(1 - \lambda)^{223}
+\end{aligned}
+$$
+
+Portanto:
+
+$$
+\begin{aligned}
+\lambda | \mathbf{x} 
+& \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b) \\
+& \sim \text{Beta}(183, 223)
+\end{aligned}
+$$
+
+Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+n       <- 400         # Tamanho da amostra
+lambda   <- 180        # Número de vacinados
+lambda.c <- n - lambda # Número de não vacinados
+
+# Priori: Beta(3,3)
+a <- 3                 
+b <- 3                 
+
+# Parâmetros da posteriori
+post.a <- lambda + a
+post.b <- lambda.c + b
+
+# Calcular probabilidade da hipótese H0: lambda > 0.35
+prob <- round(1 - pbeta(0.35, post.a, post.b), 3)
+
+# Gráfico da posteriori Beta(183, 223)
+curve(
+  dbeta(x, post.a, post.b), 0.2, 0.6, lwd = 2, col = "#2F4F4F",
+  ylab = expression(lambda ~ "|" ~ bold(x) ~ " " ~ "~ Beta(183, 223)"),
+  xlab = "Proporção de vacinados após a campanha",
+  main = expression("Distribuição a Posteriori para " ~ lambda ~ "|" ~ bold(x) ~ "(Campanha de Vacinação contra a Gripe)"),
+  ylim = c(0, 20),
+  cex.lab = 1.1,   
+  cex.axis = 1.2,  
+  cex.main = 1.4   
+)
+
+# Quantis
+b1 <- qbeta(0.025, post.a, post.b)
+b2 <- qbeta(0.975, post.a, post.b)
+
+# Linhas verticais para os quantis
+lines(x = c(b1, b1), y = c(0, dbeta(b1, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(b2, b2), y = c(0, dbeta(b2, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+
+# Linha vertical apenas para p > 0.35 (hipótese)
+abline(v = 0.35, col = "red", lwd = 2, lty = 2)
+
+# Legenda (incluindo os quantis)
+legend("topleft", 
+       legend = c(
+         "Posteriori", 
+         bquote(P(lambda > 0.35 ~ "|" ~ bold(x)) == .(prob)),
+         bquote(Q[0.025] == .(round(b1, 4))),
+         bquote(Q[0.975] == .(round(b2, 4)))
+       ),
+       col = c("#2F4F4F", "red", "#00CD00", "#00CD00"), 
+       lwd = 2, lty = c(1, 2, 1, 1), bty = "n", cex = 1.2)
+
+```
+
+**Conclusão:** Ao analisar a distribuição a posteriori $\lambda | \mathbf{x}$, observa-se que a probabilidade da hipótese $P(\lambda \geq 0.35 \mid \mathbf{x}) = 1$, o que é corroborado visualmente, portanto a probabilidade de que a campanha aumentou a taxa de vacinação é de 100%.
+:::
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### A eficácia da Pfizer
+
+::: {style="text-align: justify"}
+O artigo Polack et al. (2020) apresenta um estudo clínico de fase 3 randomizado e controlado por placebo que avaliou a eficácia da vacina BNT162b2 (Pfizer-BioNTech COVID-19) em participantes com 16 anos ou mais sem evidências de infecção por SARS-CoV-2. A tabela abaixo apresenta o número de participantes por grupo e o número de casos de Covid-19.
+
+| Grupo             | Participantes | Casos Covid-19 |
+|-------------------|---------------|----------------|
+| $\alpha:$ Vacina  | $n1: 18198$   | 8              |
+| $\delta:$ Placebo | $n2: 18325$   | 162            |
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\alpha$ a **probabilidade associada de se contrair COVID-19** no grupo Vacina e $\delta$ no grupo Placebo.
+-   Para o grupo Vacina: $n_1 = 18198$ (tamanho da amostra) e $\sum_{i=1}^{n_1} x_i = 8$ (Evento de interesse).
+-   Para o grupo Placebo: $n_2 = 18325$ (tamanho da amostra) e $\sum_{i=1}^{n_2} y_i = 162$ (Evento de interesse).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i|\alpha \sim \text{Bernoulli}(\alpha)$ e $y_i|\delta \sim \text{Bernoulli}(\delta)$:
+
+$$
+\begin{array}{c|c}
+\begin{aligned}
+\mathcal{L}(\alpha) 
+& \propto \alpha^{\sum_{i = 1}^{n_{1}} x_i} (1 - \alpha)^{n_{1} - \sum_{i = 1}^{n_{1}} x_i} \\
+& \propto \alpha^{8} (1 - \alpha)^{18198 - 8} \\
+& \propto \alpha^{8} (1 - \alpha)^{18190}
+\end{aligned}
+\quad \quad &  \quad \quad 
+\begin{aligned}
+\mathcal{L}(\delta) 
+& \propto \delta^{\sum_{i = 1}^{n_{2}} y_i} (1 - \delta)^{n_{2} - \sum_{i = 1}^{n_{2}} y_i} \\
+& \propto \delta^{162} (1 - \delta)^{18325 - 162} \\
+& \propto \delta^{162} (1 - \delta)^{18163}
+\end{aligned}
+\end{array}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori $Beta(a,b)$ para $\alpha$ e $\delta$, com hiperparâmetros $a = 1$ e $b = 1$:
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja:
+
+A distribuição a posteriori para $\alpha | \mathbf{x}$ é expressa por:
+
+$$
+\alpha | \mathbf{x} \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n_{1} - \sum_{i = 1}^n x_i + b) \quad = \quad \alpha | \mathbf{x} \sim \text{Beta}(9, 18191)
+$$
+
+A distribuição a posteriori para $\delta | \mathbf{y}$ é expressa por:
+
+$$
+\delta | \mathbf{y} \sim \text{Beta}(a + \sum_{i = 1}^n y_i,\, n_{2} - \sum_{i = 1}^n y_i + b) \quad = \quad \delta | \mathbf{y} \sim \text{Beta}(163, 18164)
+$$
+
+```{r}
+# --- Dados ---
+# Grupo Vacina
+n1 <- 18198
+x1 <- 8
+# Grupo Placebo
+n2 <- 18325
+x2 <- 162
+
+# Priori: Beta(1,1)
+a <- 1
+b <- 1
+
+# Parâmetros da posteriori
+post.a1 <- x1 + a      # Vacina
+post.b1 <- (n1 - x1) + b
+
+post.a2 <- x2 + a      # Placebo
+post.b2 <- (n2 - x2) + b
+
+# --- Gráfico das posteriores ---
+curve(
+  dbeta(x, post.a1, post.b1), 0, 0.017, lwd = 2, col = "darkblue",
+  ylab = "",
+  xlab = "Probabilidade de Infecção",
+  main = "Distribuições a Posteriori: Grupos Vacina e Placebo",
+  ylim = c(0, 2300),
+  cex.lab = 1.1,
+  cex.axis = 1.2,
+  cex.main = 1.4
+)
+
+# Posteriori - Grupo Placebo
+curve(dbeta(x, post.a2, post.b2), 0, 0.017, lwd = 2, col = "deeppink", add = TRUE)
+
+# Quantis - Grupo Vacina
+q1_vacina_low <- qbeta(0.025, post.a1, post.b1)
+q1_vacina_high <- qbeta(0.975, post.a1, post.b1)
+lines(x = c(q1_vacina_low, q1_vacina_low), y = c(0, dbeta(q1_vacina_low, post.a1, post.b1)), 
+      col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(q1_vacina_high, q1_vacina_high), y = c(0, dbeta(q1_vacina_high, post.a1, post.b1)), 
+      col = "#00CD00", lwd = 2, lty = 1)
+
+# Quantis - Grupo Placebo
+q1_placebo_low <- qbeta(0.025, post.a2, post.b2)
+q1_placebo_high <- qbeta(0.975, post.a2, post.b2)
+lines(x = c(q1_placebo_low, q1_placebo_low), y = c(0, dbeta(q1_placebo_low, post.a2, post.b2)), 
+      col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(q1_placebo_high, q1_placebo_high), y = c(0, dbeta(q1_placebo_high, post.a2, post.b2)), 
+      col = "#00CD00", lwd = 2, lty = 1)
+
+# Legenda
+legend("topright",
+       legend = c(
+         "Vacina", 
+         "Placebo",
+         bquote(Q[0.025] ~ "(Vacina)" ~ "=" ~ .(round(q1_vacina_low, 6))),
+         bquote(Q[0.975] ~ "(Vacina)" ~ "=" ~ .(round(q1_vacina_high, 6))),
+         bquote(Q[0.025] ~ "(Placebo)" ~ "=" ~ .(round(q1_placebo_low, 6))),
+         bquote(Q[0.975] ~ "(Placebo)" ~ "=" ~ .(round(q1_placebo_high, 6)))
+       ),
+       col = c("darkblue", "deeppink", rep("#00CD00", 4)),
+       lwd = 2, lty = 1, bty = "n", cex = 1.2
+)
+
+```
+
+**Conclusão:** Ao comparar as distribuições a posteriori para os grupos $\alpha$: Vacina e $\delta$: Placebo, observou-se que os indivíduos que receberam a vacina apresentam uma probabilidade **inferior** de infecção pela COVID-19 em relação aos que receberam o placebo. Visualmente, percebe-se que essa probabilidade é cerca de 1% menor para o grupo vacinado. Ainda assim, essa diferença pode se mostrar relevante a depender do contexto, considerando o tamanho amostral relativamente grande do estudo, com aproximadamente 18 mil e 200 pessoas.
+:::
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### A Tragédia do Lusitania (1915)
+
+::: {style="text-align: justify"}
+O naufrágio do RMS Lusitania, ocorrido em 1915, foi uma tragédia de grandes proporções. A tabela a seguir apresenta o número de sobreviventes e mortos, de acordo com a classe dos passageiros e o tipo de tripulação:
+
+| Categoria (Populações)                 | Sobreviventes | Mortos |
+|----------------------------------------|---------------|--------|
+| $\rho^{1}:$ Primeira classe            | 113           | 177    |
+| $\rho^{2}:$ Segunda classe             | 229           | 372    |
+| $\rho^{3}:$ Terceira classe            | 134           | 239    |
+| $\rho^{4}:$ Tripulação - abastecimento | 139           | 167    |
+| $\rho^{5}:$ Tripulação - engenharia    | 112           | 201    |
+| $\rho^{6}:$ Tripulação - deck          | 41            | 37     |
+
+**Solução:**
+
+Dados do experimento:
+
+-   Denotaremos $\rho^{*}$ a **probabilidade de sobrevivência** entre os indivíduos dos diferentes tipos de tripulação e classes de passageiros.
+-   **Evento de interesse:** Número de mortos em cada população $\rho^{*}$.
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(\rho^{*})$, as funções de verossimilhança para cada população são expressa por:
+
+$$
+\begin{aligned}
+\mathcal{L}(\rho^{1}) \propto \rho^{113} (1 - \rho)^{177} \\
+\mathcal{L}(\rho^{2}) \propto \rho^{229} (1 - \rho)^{372} \\
+\mathcal{L}(\rho^{3}) \propto \rho^{134} (1 - \rho)^{239} \\
+\mathcal{L}(\rho^{4}) \propto \rho^{139} (1 - \rho)^{167} \\
+\mathcal{L}(\rho^{5}) \propto \rho^{112} (1 - \rho)^{201} \\
+\mathcal{L}(\rho^{6}) \propto \rho^{41} (1 - \rho)^{37} \\
+\end{aligned}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Beta para $\rho^{*}$, onde $\rho^{*} \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 2$ e $b = 2$:
+
+$$
+\begin{aligned}
+f(\rho^{*}) 
+& \propto (\rho^{*})^{a}(1 - \rho^{*})^{b} \\
+& \propto (\rho^{*})^{2}(1 - \rho^{*})^{2}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $\rho^{*} | \mathbf{x}$ para as demais populações são:
+
+$$
+\rho^{*} | \mathbf{x} \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b)
+$$ Portanto:
+
+$$
+\begin{aligned}
+\rho^{1} | \mathbf{x} \sim \text{Beta}(115, 179) \\
+\rho^{2} | \mathbf{x} \sim \text{Beta}(231, 374) \\
+\rho^{3} | \mathbf{x} \sim \text{Beta}(136, 241) \\
+\rho^{4} | \mathbf{x} \sim \text{Beta}(141, 169) \\
+\rho^{5} | \mathbf{x} \sim \text{Beta}(114, 203) \\
+\rho^{6} | \mathbf{x} \sim \text{Beta}(43, 39) \\
+\end{aligned}
+$$
+
+Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+sobreviventes <- c(113, 229, 134, 139, 112, 41)
+mortos <- c(177, 372, 239, 167, 201, 37)
+
+# Hiperparâmetros da Priori Beta(2,2)
+a <- 2
+b <- 2
+
+# Posteriores
+a_posteriori <- sobreviventes + a
+b_posteriori <- mortos + b
+
+# Cores
+cores_classes <- c("#0000FF", "#FF0000", "#00C957", "#FFD700", "#000000", "#FF69B4")
+
+# Gráfico inicial
+curve(
+  dbeta(x, a_posteriori[1], b_posteriori[1]), 0.25, 0.7,
+  lwd = 3, col = cores_classes[1],
+  ylab = "Densidade", xlab = "Probabilidade de Sobrevivência",
+  main = "Distribuições a Posteriori para as 6 Populações",
+  ylim = c(0, 25)
+)
+
+# Adicionando as outras curvas
+for (i in 2:6) {
+  curve(dbeta(x, a_posteriori[i], b_posteriori[i]), 0, 1, lwd = 3, col = cores_classes[i], add = TRUE)
 }
+
+# Legenda
+legend("topright",
+       legend = parse(text = c(
+         "rho^1~': Primeira classe'",
+         "rho^2~': Segunda classe'",
+         "rho^3~': Terceira classe'",
+         "rho^4~': Tripulação - abastecimento'",
+         "rho^5~': Tripulação - engenharia'",
+         "rho^6~': Tripulação - deck'"
+       )),
+       col = cores_classes, lwd = 3, lty = 1, bty = "n", cex = 1
+)
+
+# Definir semente
+set.seed(0310)
+
+# Número de simulações de Monte Carlo
+w <- 100000
+
+# Simulações das Posteriores
+simulacoes <- list(
+  rbeta(w, a_posteriori[1], b_posteriori[1]),
+  rbeta(w, a_posteriori[2], b_posteriori[2]),
+  rbeta(w, a_posteriori[3], b_posteriori[3]),
+  rbeta(w, a_posteriori[4], b_posteriori[4]),
+  rbeta(w, a_posteriori[5], b_posteriori[5]),
+  rbeta(w, a_posteriori[6], b_posteriori[6])
+)
+
+# Função de teste de hipótese
+teste_hipotese <- function(simulacoes) {
+  n_classes <- length(simulacoes)
+  resultados <- matrix(0, nrow = n_classes, ncol = n_classes)
+  colnames(resultados) <- rownames(resultados) <- c("p1", "p2", "p3", "p4", "p5", "p6")
+  
+  for (i in 1:(n_classes - 1)) {
+    for (j in (i + 1):n_classes) {
+      resultados[i, j] <- mean(simulacoes[[i]] > simulacoes[[j]])
+      resultados[j, i] <- 1 - resultados[i, j]
+    }
+  }
+  
+  return(resultados)
+}
+
+# Realizar o teste
+resultados_hipotese <- teste_hipotese(simulacoes)
+
+# Criar dataframe
+resultados_df <- as.data.frame(resultados_hipotese)
+
+# Mover coluna "Pares" para a esquerda
+resultados_df <- cbind(Pares = rownames(resultados_df), resultados_df)
+
+# Criar flextable
+resultados_flextable <- flextable(resultados_df) %>%
+  compose(j = "Pares", value = as_paragraph(as_chunk(Pares))) %>%
+  set_header_labels(
+    Pares = "Populações\n(Grupos)",
+    p1 = "p1", p2 = "p2", p3 = "p3",
+    p4 = "p4", p5 = "p5", p6 = "p6"
+  ) %>%
+  color(j = "p1", i = ~ p1 > 0.75, color = "red") %>%
+  color(j = "p1", i = ~ p1 <= 0.75, color = "black") %>%
+  color(j = "p2", i = ~ p2 > 0.75, color = "red") %>%
+  color(j = "p2", i = ~ p2 <= 0.75, color = "black") %>%
+  color(j = "p3", i = ~ p3 > 0.75, color = "red") %>%
+  color(j = "p3", i = ~ p3 <= 0.75, color = "black") %>%
+  color(j = "p4", i = ~ p4 > 0.75, color = "red") %>%
+  color(j = "p4", i = ~ p4 <= 0.75, color = "black") %>%
+  color(j = "p5", i = ~ p5 > 0.75, color = "red") %>%
+  color(j = "p5", i = ~ p5 <= 0.75, color = "black") %>%
+  color(j = "p6", i = ~ p6 > 0.75, color = "red") %>%
+  color(j = "p6", i = ~ p6 <= 0.75, color = "black") %>%
+  align(align = "center", part = "all") %>%
+  add_header_lines(values = "Tabela 1: Teste de hipótese a partir de Monte Carlo") %>%
+  color(i = 1, color = "darkred", part = "header") %>%
+  autofit()
+
+# Mostrar o flextable
+resultados_flextable
+
 ```
 
-## Exemplo de código em Python
-
-``` python
-def fizz_buzz(num):
-  if num % 15 == 0:
-  print("FizzBuzz")
-elif num % 5 == 0:
-  print("Buzz")
-elif num % 3 == 0:
-  print("Fizz")
-else:
-  print(num)
-```
+**Conclusão:** Ao analisar a distribuição a posteriori de $\rho^{*} \mid \mathbf{x}$ (para cada classe), observou-se que as populações $\rho^1$: Primeira Classe, $\rho^2$: Segunda Classe, $\rho^3$: Terceira Classe e $\rho^5$: Tripulação de Engenharia apresentam maior sobreposição entre suas densidades. Por meio do teste de hipótese utilizando o método de Monte Carlo, com 100.000 simulações, há indícios de que as probabilidades de sobrevivência entre esses grupos não diferem substancialmente. Em contraste, as populações $\rho^4$: Tripulação de Abastecimento e $\rho^6$: Tripulação de Deck apresentam probabilidades de sobrevivência inferiores em comparação às demais. Essa evidência é corroborada pela Tabela 1, que apresenta os testes pareados entre as populações. Considera-se uma probabilidade superior a 0.75 como indicativa de forte evidência para a diferença nas probabilidades de sobrevivência entre os grupos.
 :::
 
+<br>
 
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### Imagem corporal
+
+::: {style="text-align: justify"}
+O projeto Estado nutricional e sua relação com a imagem corporal em escolares do município de Manaus foi submetido ao LabEst em 2013. Nele, estudantes identificavam como gostaria que fosse o seu corpo segundo a Escala de Stunkard, apresentada na imagem abaixo. Em seguida, uma série de medidas foram realizadas para determinar a real classificação do estudante. Com base nessas informações, cada estudante foi classificado segundo sua satisfação com o próprio corpo do seguinte modo:
+
+|           | Satisfeito | Insastifeito por excesso | Insastifeito por magreza | Total |
+|---------------|---------------|---------------|---------------|---------------|
+| Masculino | 24         | 10                       | 24                       | 58    |
+| Feminino  | 14         | 22                       | 24                       | 60    |
+
+Verificar como essas expectativas variam dentro do mesmo sexo. Especificamente
+
+-   Teste se há evidências de que os homens possuem probabilidade maior de estarem insatisfeitos por magreza do que satisfeitos.
+
+-   Teste se há evidências de que as mulheres possuem probabilidade maior de estarem insatisfeitas por excesso do que satisfeitas.
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\beta_{S}, \beta_{E}$ e $\beta_{M}$ as probabilidades de alguém do sexo masculino pertencer a categoria Satisfeito, Insatisfeito por Excesso ou Insatisfeito por magreza.
+
+-   Seja $\gamma_{S}, \gamma_{E}$ e $\gamma_{M}$ as probabilidades de alguém do sexo feminino pertencer a categoria Satisfeito, Insatisfeito por Excesso ou Insatisfeito por magreza.
+
+-- **Funções de Verossimilhança:**
+
+Assumindo que $x_i|\boldsymbol{\beta} \sim Multinomial(n,\boldsymbol{\beta})$ e $y_i|\boldsymbol{\gamma} \sim Multinomial(n,\boldsymbol{\gamma})$:
+
+$$
+\begin{array}{c|c}
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\beta}) \propto \beta_{S}^{24} \cdot \beta_{E}^{10} \cdot\beta_{M}^{24} \\
+\end{aligned}
+\quad \quad &  \quad \quad 
+\begin{aligned}
+\mathcal{L}(\boldsymbol{\gamma}) \propto \gamma_{S}^{14} \cdot \gamma_{E}^{22} \cdot\gamma_{M}^{24} \\\end{aligned}
+\end{array}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Dirichlet para $\boldsymbol{\beta}$ e para $\boldsymbol{\gamma}$, onde os hiperparâmetros são $a_{1} = 2$, $a_{2} = 2$ e $a_{3} = 2$:
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja:
+
+A distribuição a posteriori para $\boldsymbol{\beta}$ é expressa por:
+
+$$
+\begin{aligned}
+\boldsymbol{\beta} 
+& \sim \text{Dirichlet}(\beta_{S}^{24+a_{1}},\beta_{E}^{10+a_{2}}, \beta_{M}^{24+a_{3}}) \\ 
+& \sim \text{Dirichlet}(\beta_{S}^{24+2},\beta_{E}^{10+2}, \beta_{M}^{24+2})\\
+& \sim \text{Dirichlet}(26,12,26)
+\end{aligned}
+$$
+
+A distribuição a posteriori para $\boldsymbol{\gamma}$ é expressa por:
+
+$$
+\begin{aligned}
+\boldsymbol{\gamma} 
+& \sim \text{Dirichlet}(\gamma_{S}^{14+a_{1}},\gamma_{E}^{22+a_{2}}, \gamma_{M}^{24+a_{3}}) \\ 
+& \sim \text{Dirichlet}(\gamma_{S}^{14+2},\gamma_{E}^{22+2}, \gamma_{M}^{24+2})\\
+& \sim \text{Dirichlet}(16,24,26)
+\end{aligned}
+$$
+
+Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+**Teste 1 $(H:\beta_{M} > \beta_{S}):$** para se verificar se há evidências de que os homens possuem probabilidade maior de estarem insatisfeitos por magreza do que satisfeitos.
+
+```{r}
+# Hipotese: 
+# H: alpa_m > alpa_s 
+B <- 10000
+beta <- extraDistr::rdirichlet(B, c(26,12,26))
+mean( beta[,3] > beta[,1])
+```
+
+**Conclusão:** Com uma probabilidade de 0.50, não existem fortes evidências de que, para um indivíduo do sexo masculino entre 16 e 17 anos, a probabilidade de estar insatisfeito por magreza é maior do que satisfeito.
+
+**Teste 2 ($H:\gamma_{E} > \gamma_{S}):$** para se verificar se há evidências de que as mulheres possuem probabilidade maior de estarem insatisfeitas por excesso do que satisfeitas.
+
+```{r}
+# Hipotese: 
+# H: gamma_m > gamma_s 
+B <- 10000
+gamma <- extraDistr::rdirichlet(B, c(16,24,26))
+mean( gamma[,2] > gamma[,1])
+```
+
+**Conclusão:** Com uma probabilidade maior que 0.89, existem fortes evidências de que, para um indivíduo do sexo femminino entre 16 e 17 anos, a probabilidade de estar insatisfeito por excesso é maior do que satisfeita.
+:::
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
