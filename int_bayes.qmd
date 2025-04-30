@@ -9,6 +9,11 @@ lang: pt
 editor: visual                                                         # -----> Define o uso do editor visual (modo WYSIWYG no RStudio, por exemplo)
 ---
 
+
+
+
+
+
 ```{r setup, include=FALSE}
 # Define opções padrão para todos os chunks de código no R Markdown
 knitr::opts_chunk$set(
