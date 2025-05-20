@@ -12,16 +12,18 @@ website:
     #foreground: "blue"
     collapse: FALSE
     left:
-      - href: mlg.qmd
-        text: Modelos Lineares Generalizados (MLG)
-      - href: imd.qmd
-        text: Introdução à Mineração de Dados (IMD)
-      - href: int_bayes.qmd
-        text: Introdução à Inferência Bayesiana
-      - href: resumo.qmd
-        text: Lista de Café da Manhã
-      - href: about.qmd
-        text: Sobre 
+      - href: Analisefinal.qmd
+        text: LabEst
+      # - href: mlg.qmd
+      #   text: Modelos Lineares Generalizados (MLG)
+      # - href: imd.qmd
+      #   text: Introdução à Mineração de Dados (IMD)
+      # - href: int_bayes.qmd
+      #   text: Introdução à Inferência Bayesiana
+      # - href: resumo.qmd
+      #   text: Lista de Café da Manhã
+      # - href: about.qmd
+      #   text: Sobre 
     right:
       - icon: github
         href: https://github.com/
