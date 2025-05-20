@@ -1,0 +1,176 @@
+---
+title: "**IEE016 - Introdução à Inferência Bayesiana**"
+subtitle: "**Resolução dos Exercícios – Capítulo 5: Modelo de Bernoulli**"
+author: "Alexssandro da Silva Oliveira - Matrícula: 219.512.61"
+date: "2025-04-28"
+lang: pt # -----> Linguagem: português
+format: 
+  html: 
+    toc: true               # Índice
+    toc-title: Sumário      # --> Título exibido no topo do sumário
+    html-math-method: katex # suporte a matemática
+    toc-location: right     # Localização do índice
+    number-sections: true   # Número das seções
+    code-fold: true         # Colapsar códigos
+    margin-top: -1em
+    theme: journal
+    
+title-block-banner: true
+editor: visual
+---
+
+```{r setup, include=FALSE}
+# Define opções padrão para todos os chunks de código no R Markdown
+knitr::opts_chunk$set(
+  echo = TRUE,         # Oculta o código nos resultados finais do documento
+  warning = FALSE,     # Suprime mensagens de aviso (warnings)
+  message = FALSE,     # Suprime mensagens informativas (como as de carregamento de pacotes)
+  fig.width = 10,      # Define a largura padrão das figuras (em polegadas)
+  fig.height = 6       # Define a altura padrão das figuras (em polegadas)
+)
+
+```
+
+## Exercícios
+
+::: {style="text-align: justify"}
+Propõe-se a solução dos exercícios do Capítulo 5: Modelo de Bernoulli. Posteriormente, serão expostas e discutidas as conclusões acerca dos resultados obtidos. Para a elaboração deste estudo, empregaremos a linguagem de programação [**R**](http://www.R-project.org/), voltada para a manipulação, análise e visualização de dados, bem como o software livre de ambiente de desenvolvimento integrado [**RStudio**](https://posit.co/download/rstudio-desktop/).
+:::
+
+```{r}
+source("funcoes.R")
+source("pacotes.R")
+```
+
+
+```{r}
+# Lendo os dados
+dados = readxl::read_excel("dados.xlsx", sheet = "dados")
+resumo.variaveis(dados, caption = "Resumo")
+```
+
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
+
+### Eficácia de um Novo Medicamento
+
+::: {style="text-align: justify"}
+Uma empresa farmacêutica desenvolveu um novo medicamento para o tratamento de enxaquecas. Antes do lançamento, ela afirma que o medicamento alivia a dor em pelo menos 80% dos pacientes. Um estudo independente, com 250 participantes, revelou que 180 deles relataram alívio da dor. Os resultados desse estudo fornecem evidências suficientes para rejeitar a alegação da empresa farmacêutica?
+
+**Solução:**
+
+Dados do experimento:
+
+-   Seja $\alpha$ a **eficácia do medicamento.**
+-   **Tamanho da amostra** $n$ = 250 (Número total de participantes).
+-   **Sucessos observados** $\sum_{i=1}^{n} x_i$ = 180 (Pacientes que relataram alívio da dor).
+
+-- **Função de Verossimilhança:** Assumindo que $x_i \sim \text{Bernoulli}(\alpha)$:
+
+$$
+\begin{aligned}
+\mathcal{L}(\alpha) 
+& \propto \alpha^{\sum_{i = 1}^{n} x_i} (1 - \alpha)^{n - \sum_{i = 1}^{n} x_i} \\
+& \propto \alpha^{180} (1 - \alpha)^{250 - 180} \\
+& \propto \alpha^{180} (1 - \alpha)^{70}
+\end{aligned}
+$$
+
+-- **Distribuição a priori**: Considerando uma priori Beta para $\alpha$, onde $\alpha \sim \text{Beta}(a, b)$, com hiperparâmetros $a = 2$ e $b = 2$:
+
+$$
+\begin{aligned}
+f(\alpha) 
+& \propto \alpha^{a}(1 - \alpha)^{b} \\
+& \propto \alpha^{2}(1 - \alpha)^{2}
+\end{aligned}
+$$
+
+-- **Distribuição a posteriori**: E obtida ao combinar as fontes de informações provenientes dos dados e da priori. Ou seja, a posteriori de $\alpha | \mathbf{x}$ é:
+
+$$
+\begin{aligned}
+f(\alpha | \mathbf{\mathcal{x_{i}, \ldots,x_{n}}})
+& \propto \mathcal{L}(\alpha) \cdot f(\alpha) \\
+& \propto \alpha^{180}(1 - \alpha)^{70} \cdot \alpha^{2}(1 - \alpha)^{2} \\
+& \propto \alpha^{182}(1 - \alpha)^{72}
+\end{aligned}
+$$
+
+Portanto:
+
+$$
+\begin{aligned}
+\alpha | \mathbf{x} 
+& \sim \text{Beta}(a + \sum_{i = 1}^n x_i,\, n - \sum_{i = 1}^n x_i + b) \\
+& \sim \text{Beta}(182, 72)
+\end{aligned}
+$$ Usando o software [RStudio](https://posit.co/download/rstudio-desktop/) para desenvolver e executar a aplicação.
+
+```{r}
+# Dados
+n <- 250
+alpha <- 180
+alpha.c <- n - alpha
+
+# Priori: Hiperparâmetros Beta(2,2)
+a <- 2
+b <- 2
+
+# Parâmetros da posteriori
+post.a <- alpha + a
+post.b <- alpha.c + b
+
+# Calcular probabilidade da hipótese H0: α > 0.8
+prob <- round(1 - pbeta(0.8, post.a, post.b), 3)
+
+# Gráfico da posteriori Beta(182,72)
+curve(
+  dbeta(x, post.a, post.b), 0.55, 0.85, lwd = 2, col = "#00008B",
+  ylab = expression(alpha ~ "|" ~ bold(x) ~ " " ~ "~ Beta(182, 72)"),
+  xlab = "Probabilidade de Eficácia do Medicamento",
+  main = expression("Distribuição a Posteriori para " ~ alpha ~ "|" ~ bold(x) ~ "(Eficácia do Medicamento)"),
+  ylim = c(0, 15),
+  cex.lab = 1.1,
+  cex.axis = 1.2,
+  cex.main = 1.4
+)
+
+# Quantis
+b1 <- qbeta(0.025, post.a, post.b)
+b2 <- qbeta(0.975, post.a, post.b)
+
+# Linhas verticais para os quantis
+lines(x = c(b1, b1), y = c(0, dbeta(b1, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+lines(x = c(b2, b2), y = c(0, dbeta(b2, post.a, post.b)), col = "#00CD00", lwd = 2, lty = 1)
+
+# Linha vertical apenas para p = 0.8 (hipótese)
+abline(v = 0.8, col = "#FF1493", lwd = 2, lty = 1)
+
+# Legenda (incluindo os quantis)
+legend("topleft", 
+       legend = c(
+         "Posteriori", 
+         bquote(P(alpha >= 0.80 ~ "|" ~ bold(x)) == .(prob)),
+         bquote(Q[0.025] == .(round(b1, 4))),
+         bquote(Q[0.975] == .(round(b2, 4)))
+       ),
+       col = c("#00008B", "#FF1493", "#00CD00", "#00CD00"), 
+       lwd = 2, lty = c(1, 1, 1, 1), bty = "n", cex = 1.2)
+
+```
+
+**Conclusão:** Ao analisar a distribuição a posteriori $\alpha | \mathbf{x}$, observa-se que a probabilidade da hipótese $P(\alpha \geq 0{,}80 \mid \mathbf{x}) = 0.001$ está concentrada na cauda da distribuição. Isso indica que não há evidências suficientes para sustentar a alegação da empresa de que o medicamento alivia a dor em pelo menos 80% dos casos, conclusão essa que é corroborada visualmente pelo gráfico da densidade a posteriori.
+:::
+
+<br>
+
+::: {style="border-top: 2px solid #003366;"}
+:::
+
+<br>
