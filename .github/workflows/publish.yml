@@ -56,6 +56,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
+      - name: Instalar dependências de sistema para compilar pacotes R
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libssl-dev
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
@@ -75,4 +80,4 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+          
