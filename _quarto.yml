@@ -14,16 +14,6 @@ website:
     left:
       - href: Analisefinal.qmd
         text: LabEst
-      # - href: mlg.qmd
-      #   text: Modelos Lineares Generalizados (MLG)
-      # - href: imd.qmd
-      #   text: Introdução à Mineração de Dados (IMD)
-      # - href: int_bayes.qmd
-      #   text: Introdução à Inferência Bayesiana
-      # - href: resumo.qmd
-      #   text: Lista de Café da Manhã
-      # - href: about.qmd
-      #   text: Sobre 
     right:
       - icon: github
         href: https://github.com/
@@ -35,11 +25,7 @@ website:
     center: 
       - text: "About"
         href: about.qmd
-      - text: "License"
-        href: license.md
-      - text: "Trademark"
-        href: trademark.qmd
-
+        
 format: 
   html:                                                                # --> Formatação específica para saída em HTML
     toc: true                                                          # --> Ativa o sumário (índice)
