@@ -72,7 +72,7 @@ jobs:
       - name: Install R Dependencies
         run: |
           Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
-          Rscript -e "renv::restore()"
+          Rscript -e "renv::restore(prompt = FALSE)"
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
